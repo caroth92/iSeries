@@ -35,6 +35,8 @@
 		FA48E9AD1AA7F67900B51523 /* FBAudienceNetwork.README.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA48E8921AA7F67900B51523 /* FBAudienceNetwork.README.txt */; };
 		FA48E9AE1AA7F67900B51523 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FA48E8931AA7F67900B51523 /* LICENSE */; };
 		FA48E9AF1AA7F67900B51523 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA48E8941AA7F67900B51523 /* README.txt */; };
+		FA48EA711AA7FCD300B51523 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48EA6F1AA7FCD300B51523 /* LoginViewController.swift */; };
+		FA48EA741AA8183800B51523 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA48EA731AA8183800B51523 /* Login.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		FA48E8921AA7F67900B51523 /* FBAudienceNetwork.README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FBAudienceNetwork.README.txt; sourceTree = "<group>"; };
 		FA48E8931AA7F67900B51523 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		FA48E8941AA7F67900B51523 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		FA48EA6F1AA7FCD300B51523 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FA48EA731AA8183800B51523 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,7 @@
 		4BB027291AA7E05B00915046 /* iSeries */ = {
 			isa = PBXGroup;
 			children = (
+				FA48EA6C1AA7FC6200B51523 /* Login */,
 				4BB0272C1AA7E05B00915046 /* AppDelegate.swift */,
 				4BB0272E1AA7E05B00915046 /* FirstViewController.swift */,
 				4BB027301AA7E05B00915046 /* SecondViewController.swift */,
@@ -230,6 +235,15 @@
 			path = FacebookSDK;
 			sourceTree = "<group>";
 		};
+		FA48EA6C1AA7FC6200B51523 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FA48EA6F1AA7FCD300B51523 /* LoginViewController.swift */,
+				FA48EA731AA8183800B51523 /* Login.storyboard */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -311,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA48EA741AA8183800B51523 /* Login.storyboard in Resources */,
 				4BB027341AA7E05B00915046 /* Main.storyboard in Resources */,
 				4BB027391AA7E05B00915046 /* LaunchScreen.xib in Resources */,
 				FA48E9AD1AA7F67900B51523 /* FBAudienceNetwork.README.txt in Resources */,
@@ -334,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA48EA711AA7FCD300B51523 /* LoginViewController.swift in Sources */,
 				4BB027311AA7E05B00915046 /* SecondViewController.swift in Sources */,
 				4BB0272D1AA7E05B00915046 /* AppDelegate.swift in Sources */,
 				4BB0272F1AA7E05B00915046 /* FirstViewController.swift in Sources */,
