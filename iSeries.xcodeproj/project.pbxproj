@@ -30,7 +30,6 @@
 		FA103F341AA7ED180072C254 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA103F2F1AA7ED180072C254 /* ParseCrashReporting.framework */; };
 		FA103F351AA7ED180072C254 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA103F301AA7ED180072C254 /* ParseFacebookUtils.framework */; };
 		FA103F361AA7ED180072C254 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA103F311AA7ED180072C254 /* ParseUI.framework */; };
-		FA48E9AA1AA7F67900B51523 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA48E88F1AA7F67900B51523 /* Bolts.framework */; };
 		FA48E9AB1AA7F67900B51523 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA48E8901AA7F67900B51523 /* FacebookSDK.framework */; };
 		FA48E9AC1AA7F67900B51523 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA48E8911AA7F67900B51523 /* FBAudienceNetwork.framework */; };
 		FA48E9AD1AA7F67900B51523 /* FBAudienceNetwork.README.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA48E8921AA7F67900B51523 /* FBAudienceNetwork.README.txt */; };
@@ -77,7 +76,6 @@
 		FA103F301AA7ED180072C254 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		FA103F311AA7ED180072C254 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		FA103F3C1AA7EEEB0072C254 /* iSeries-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSeries-Bridging-Header.h"; sourceTree = "<group>"; };
-		FA48E88F1AA7F67900B51523 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		FA48E8901AA7F67900B51523 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		FA48E8911AA7F67900B51523 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		FA48E8921AA7F67900B51523 /* FBAudienceNetwork.README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FBAudienceNetwork.README.txt; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 				FA103F351AA7ED180072C254 /* ParseFacebookUtils.framework in Frameworks */,
 				FA103F011AA7EA4C0072C254 /* libz.dylib in Frameworks */,
 				FA103EFF1AA7EA450072C254 /* CoreLocation.framework in Frameworks */,
-				FA48E9AA1AA7F67900B51523 /* Bolts.framework in Frameworks */,
 				FA103EFD1AA7EA410072C254 /* CoreGraphics.framework in Frameworks */,
 				FA103EFB1AA7EA3D0072C254 /* Foundation.framework in Frameworks */,
 				FA103EF91AA7EA350072C254 /* Security.framework in Frameworks */,
@@ -224,7 +221,6 @@
 		FA48E88E1AA7F67900B51523 /* FacebookSDK */ = {
 			isa = PBXGroup;
 			children = (
-				FA48E88F1AA7F67900B51523 /* Bolts.framework */,
 				FA48E8901AA7F67900B51523 /* FacebookSDK.framework */,
 				FA48E8911AA7F67900B51523 /* FBAudienceNetwork.framework */,
 				FA48E8921AA7F67900B51523 /* FBAudienceNetwork.README.txt */,
