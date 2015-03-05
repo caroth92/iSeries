@@ -7,7 +7,7 @@
         <!--Login View Controller-->
         <scene sceneID="tep-J2-o7F">
             <objects>
-                <viewController id="pQh-eC-U6m" customClass="LoginViewController" customModule="iSeries" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" id="pQh-eC-U6m" customClass="LoginViewController" customModule="iSeries" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i7t-5O-keT"/>
                         <viewControllerLayoutGuide type="bottom" id="04f-Ru-IEI"/>
@@ -16,20 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4c-9L-kEW">
-                                <rect key="frame" x="126" y="269" width="68" height="30"/>
-                                <state key="normal" title="Facebook">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4c-9L-kEW">
+                                <rect key="frame" x="71" y="51" width="178" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Login with Facebook">
+                                    <color key="titleColor" red="0.97635973099782791" green="0.98147578008391034" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="loginViaFacebook:" destination="pQh-eC-U6m" eventType="touchUpInside" id="ZAh-d0-3RU"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eli-kX-SSq">
+                                <rect key="frame" x="71" y="111" width="178" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Login with Twitter">
+                                    <color key="titleColor" red="0.97635973099782791" green="0.98147578008391034" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.40229338034917356" blue="0.79036458333333337" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Eli-kX-SSq" firstAttribute="top" secondItem="C4c-9L-kEW" secondAttribute="bottom" constant="27" id="4Vs-1B-HLQ"/>
                             <constraint firstItem="C4c-9L-kEW" firstAttribute="centerX" secondItem="kGw-hz-aad" secondAttribute="centerX" id="G4v-Yz-1y9"/>
-                            <constraint firstItem="C4c-9L-kEW" firstAttribute="centerY" secondItem="kGw-hz-aad" secondAttribute="centerY" id="y8e-Rx-tbA"/>
+                            <constraint firstItem="Eli-kX-SSq" firstAttribute="leading" secondItem="C4c-9L-kEW" secondAttribute="leading" id="kmP-TC-EYo"/>
+                            <constraint firstItem="Eli-kX-SSq" firstAttribute="trailing" secondItem="C4c-9L-kEW" secondAttribute="trailing" id="okB-ZS-KfH"/>
+                            <constraint firstItem="C4c-9L-kEW" firstAttribute="centerY" secondItem="kGw-hz-aad" secondAttribute="centerY" constant="-218" id="y8e-Rx-tbA"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -37,6 +50,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAD-bH-vRU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="357" y="480"/>
+        </scene>
+        <!--Logout View Controller-->
+        <scene sceneID="wp3-99-1tA">
+            <objects>
+                <viewController storyboardIdentifier="logout" id="N8k-Ly-Mf6" customClass="LogoutViewController" customModule="iSeries" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Edt-cL-RRU"/>
+                        <viewControllerLayoutGuide type="bottom" id="bXx-eX-V1P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nJ5-WX-ij5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gua-Gv-eA8">
+                                <rect key="frame" x="94" y="269" width="132" height="30"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutViaFacebook:" destination="N8k-Ly-Mf6" eventType="touchUpInside" id="gXF-dQ-DB0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gua-Gv-eA8" firstAttribute="centerY" secondItem="nJ5-WX-ij5" secondAttribute="centerY" id="0kl-HG-Uxj"/>
+                            <constraint firstItem="gua-Gv-eA8" firstAttribute="leading" secondItem="nJ5-WX-ij5" secondAttribute="leading" constant="94" id="dTT-ci-ABK"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fg2-uC-HtA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="765" y="480"/>
         </scene>
     </scenes>
 </document>

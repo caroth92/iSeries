@@ -37,6 +37,7 @@
 		FA48E9AF1AA7F67900B51523 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA48E8941AA7F67900B51523 /* README.txt */; };
 		FA48EA711AA7FCD300B51523 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48EA6F1AA7FCD300B51523 /* LoginViewController.swift */; };
 		FA48EA741AA8183800B51523 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA48EA731AA8183800B51523 /* Login.storyboard */; };
+		FA48EA761AA81D3E00B51523 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48EA751AA81D3E00B51523 /* LogoutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		FA48E8941AA7F67900B51523 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		FA48EA6F1AA7FCD300B51523 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA48EA731AA8183800B51523 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		FA48EA751AA81D3E00B51523 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +242,7 @@
 			children = (
 				FA48EA6F1AA7FCD300B51523 /* LoginViewController.swift */,
 				FA48EA731AA8183800B51523 /* Login.storyboard */,
+				FA48EA751AA81D3E00B51523 /* LogoutViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				FA48EA711AA7FCD300B51523 /* LoginViewController.swift in Sources */,
 				4BB027311AA7E05B00915046 /* SecondViewController.swift in Sources */,
 				4BB0272D1AA7E05B00915046 /* AppDelegate.swift in Sources */,
+				FA48EA761AA81D3E00B51523 /* LogoutViewController.swift in Sources */,
 				4BB0272F1AA7E05B00915046 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -38,6 +38,8 @@ class LoginViewController: UIViewController {
                 if user.isNew {
                     println("User signed up and login")
                 } else {
+                    var vc = self.storyboard?.instantiateViewControllerWithIdentifier("logout") as LogoutViewController
+                    self.presentViewController(vc, animated: true, completion: nil)
                     println("User logged in")
                 }
                 
