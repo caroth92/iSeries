@@ -77,7 +77,7 @@
 		FA9ABD001AA9457A00B5B6AF /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = Parse/ParseCrashReporting.framework; sourceTree = "<group>"; };
 		FA9ABD011AA9457A00B5B6AF /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = Parse/ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		FA9ABD021AA9457A00B5B6AF /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = Parse/ParseUI.framework; sourceTree = "<group>"; };
-		FA9ABD071AA9458200B5B6AF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
+		FA9ABD071AA9458200B5B6AF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Parse/Bolts.framework; sourceTree = "<group>"; };
 		FA9ABD081AA9458200B5B6AF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		FA9ABD091AA9458200B5B6AF /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = FacebookSDK/FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		FAC99FCC1AA94BF000F35E71 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = iSeries/User.swift; sourceTree = "<group>"; };
