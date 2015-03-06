@@ -17,6 +17,7 @@ class MySeriesViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        //Prueba
     }
 
     @IBAction func logoutViaFacebook(sender: AnyObject) {
