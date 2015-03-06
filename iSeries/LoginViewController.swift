@@ -32,23 +32,20 @@ class LoginViewController: UIViewController {
         let permissionsArray = ["user_about_me"]
         
         PFFacebookUtils.logInWithPermissions(permissionsArray, block: { (user, error) -> Void in
-            if user == nil {
-                println("error")
+
+            if user.isNew {
+                println("User signed up and login")
             } else {
-                if user.isNew {
-                    println("User signed up and login")
-                } else {
-                    var vc = self.storyboard?.instantiateViewControllerWithIdentifier("logout") as LogoutViewController
-                    self.presentViewController(vc, animated: true, completion: nil)
-                    println("User logged in")
-                }
-                
-                if self.delegate != nil {
-                    self.delegate!.loginViaFacebook(self)
-                }
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let seriesVc = storyboard.instantiateViewControllerWithIdentifier("TabController") as UIViewController
+                self.presentViewController(seriesVc, animated: true, completion: nil)
+
+                println("User logged in")
             }
-            
-            
+                
+            if self.delegate != nil {
+                self.delegate!.loginViaFacebook(self)
+            }
         })
         
     }

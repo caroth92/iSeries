@@ -17,8 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("9L2hyftFykqEvu6EgpJdnMhxHIFnTAngAWngsnBU", clientKey: "xBNxZuT4x9dWjN2TkNe3N0kuh65YrZ0YDZ5pWf8X")
         PFFacebookUtils.initializeFacebook()
         
-         
-                
+        if PFUser.currentUser() != nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let seriesVc = storyboard.instantiateViewControllerWithIdentifier("MySeriesViewController") as UIViewController
+            self.window?.rootViewController = seriesVc
+        } else {
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let seriesVc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
+            self.window?.rootViewController = seriesVc
+        }
+        
         return true
     }
 
@@ -47,7 +55,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication, withSession: PFFacebookUtils.session())
     }
-    
-
 }
 

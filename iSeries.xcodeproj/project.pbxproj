@@ -27,7 +27,6 @@
 		FA103F0B1AA7EA6B0072C254 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FA103F0A1AA7EA6B0072C254 /* libsqlite3.dylib */; };
 		FA48EA711AA7FCD300B51523 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48EA6F1AA7FCD300B51523 /* LoginViewController.swift */; };
 		FA48EA741AA8183800B51523 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA48EA731AA8183800B51523 /* Login.storyboard */; };
-		FA48EA761AA81D3E00B51523 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48EA751AA81D3E00B51523 /* LogoutViewController.swift */; };
 		FA9ABD031AA9457B00B5B6AF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9ABCFF1AA9457A00B5B6AF /* Parse.framework */; };
 		FA9ABD041AA9457B00B5B6AF /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9ABD001AA9457A00B5B6AF /* ParseCrashReporting.framework */; };
 		FA9ABD051AA9457B00B5B6AF /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9ABD011AA9457A00B5B6AF /* ParseFacebookUtils.framework */; };
@@ -35,7 +34,7 @@
 		FA9ABD0A1AA9458200B5B6AF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9ABD071AA9458200B5B6AF /* Bolts.framework */; };
 		FA9ABD0B1AA9458200B5B6AF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9ABD081AA9458200B5B6AF /* FacebookSDK.framework */; };
 		FA9ABD0C1AA9458200B5B6AF /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9ABD091AA9458200B5B6AF /* FBAudienceNetwork.framework */; };
-		FA9ABD0E1AA946EE00B5B6AF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ABD0D1AA946EE00B5B6AF /* User.swift */; };
+		FAC99FCD1AA94BF000F35E71 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC99FCC1AA94BF000F35E71 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +72,6 @@
 		FA103F0A1AA7EA6B0072C254 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		FA48EA6F1AA7FCD300B51523 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA48EA731AA8183800B51523 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		FA48EA751AA81D3E00B51523 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		FA9ABC861AA9422C00B5B6AF /* iSeries-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSeries-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA9ABCFF1AA9457A00B5B6AF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Parse/Parse.framework; sourceTree = "<group>"; };
 		FA9ABD001AA9457A00B5B6AF /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = Parse/ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -82,7 +80,7 @@
 		FA9ABD071AA9458200B5B6AF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		FA9ABD081AA9458200B5B6AF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		FA9ABD091AA9458200B5B6AF /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = FacebookSDK/FBAudienceNetwork.framework; sourceTree = "<group>"; };
-		FA9ABD0D1AA946EE00B5B6AF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FAC99FCC1AA94BF000F35E71 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = iSeries/User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +122,7 @@
 		4BB0271E1AA7E05B00915046 = {
 			isa = PBXGroup;
 			children = (
+				FAC99FCC1AA94BF000F35E71 /* User.swift */,
 				4BB027291AA7E05B00915046 /* iSeries */,
 				4BB027281AA7E05B00915046 /* Products */,
 				FA103F0C1AA7EA760072C254 /* Frameworks */,
@@ -144,7 +143,6 @@
 		4BB027291AA7E05B00915046 /* iSeries */ = {
 			isa = PBXGroup;
 			children = (
-				FA9ABD0D1AA946EE00B5B6AF /* User.swift */,
 				FA48EA6C1AA7FC6200B51523 /* Login */,
 				4BB0272C1AA7E05B00915046 /* AppDelegate.swift */,
 				4BB0272E1AA7E05B00915046 /* MySeriesViewController.swift */,
@@ -212,7 +210,6 @@
 			children = (
 				FA48EA6F1AA7FCD300B51523 /* LoginViewController.swift */,
 				FA48EA731AA8183800B51523 /* Login.storyboard */,
-				FA48EA751AA81D3E00B51523 /* LogoutViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -321,9 +318,8 @@
 			files = (
 				FA48EA711AA7FCD300B51523 /* LoginViewController.swift in Sources */,
 				4BB027311AA7E05B00915046 /* SearchViewController.swift in Sources */,
-				FA9ABD0E1AA946EE00B5B6AF /* User.swift in Sources */,
+				FAC99FCD1AA94BF000F35E71 /* User.swift in Sources */,
 				4BB0272D1AA7E05B00915046 /* AppDelegate.swift in Sources */,
-				FA48EA761AA81D3E00B51523 /* LogoutViewController.swift in Sources */,
 				4BB0272F1AA7E05B00915046 /* MySeriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

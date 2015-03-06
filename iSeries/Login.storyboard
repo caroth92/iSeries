@@ -7,7 +7,7 @@
         <!--Login View Controller-->
         <scene sceneID="tep-J2-o7F">
             <objects>
-                <viewController storyboardIdentifier="login" id="pQh-eC-U6m" customClass="LoginViewController" customModule="iSeries" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="pQh-eC-U6m" customClass="LoginViewController" customModule="iSeries" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i7t-5O-keT"/>
                         <viewControllerLayoutGuide type="bottom" id="04f-Ru-IEI"/>
@@ -50,40 +50,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAD-bH-vRU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="357" y="480"/>
-        </scene>
-        <!--Logout View Controller-->
-        <scene sceneID="wp3-99-1tA">
-            <objects>
-                <viewController storyboardIdentifier="logout" id="N8k-Ly-Mf6" customClass="LogoutViewController" customModule="iSeries" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Edt-cL-RRU"/>
-                        <viewControllerLayoutGuide type="bottom" id="bXx-eX-V1P"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="nJ5-WX-ij5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gua-Gv-eA8">
-                                <rect key="frame" x="94" y="269" width="132" height="30"/>
-                                <state key="normal" title="Logout">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="logoutViaFacebook:" destination="N8k-Ly-Mf6" eventType="touchUpInside" id="gXF-dQ-DB0"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="gua-Gv-eA8" firstAttribute="centerY" secondItem="nJ5-WX-ij5" secondAttribute="centerY" id="0kl-HG-Uxj"/>
-                            <constraint firstItem="gua-Gv-eA8" firstAttribute="leading" secondItem="nJ5-WX-ij5" secondAttribute="leading" constant="94" id="dTT-ci-ABK"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fg2-uC-HtA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="765" y="480"/>
         </scene>
     </scenes>
 </document>

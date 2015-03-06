@@ -9,20 +9,9 @@
 import UIKit
 
 class MySeriesViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if (isLoggedIn()) {
-            if PFFacebookUtils.isLinkedWithUser(PFUser.currentUser()) {
-                
-            }
-        }
-        
-    }
-    
-    func isLoggedIn() -> Bool {
-        return PFUser.currentUser() != nil && PFUser.currentUser().isAuthenticated()
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,6 +19,11 @@ class MySeriesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func logoutViaFacebook(sender: AnyObject) {
+        PFUser.logOut()
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let seriesVc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
+        self.presentViewController(seriesVc, animated: true, completion: nil)
+    }
 }
 
