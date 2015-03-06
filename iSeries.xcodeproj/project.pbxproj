@@ -35,6 +35,7 @@
 		FA9ABD0A1AA9458200B5B6AF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9ABD071AA9458200B5B6AF /* Bolts.framework */; };
 		FA9ABD0B1AA9458200B5B6AF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9ABD081AA9458200B5B6AF /* FacebookSDK.framework */; };
 		FA9ABD0C1AA9458200B5B6AF /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9ABD091AA9458200B5B6AF /* FBAudienceNetwork.framework */; };
+		FA9ABD0E1AA946EE00B5B6AF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ABD0D1AA946EE00B5B6AF /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		FA9ABD071AA9458200B5B6AF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		FA9ABD081AA9458200B5B6AF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		FA9ABD091AA9458200B5B6AF /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = FacebookSDK/FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		FA9ABD0D1AA946EE00B5B6AF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 		4BB027291AA7E05B00915046 /* iSeries */ = {
 			isa = PBXGroup;
 			children = (
+				FA9ABD0D1AA946EE00B5B6AF /* User.swift */,
 				FA48EA6C1AA7FC6200B51523 /* Login */,
 				4BB0272C1AA7E05B00915046 /* AppDelegate.swift */,
 				4BB0272E1AA7E05B00915046 /* MySeriesViewController.swift */,
@@ -318,6 +321,7 @@
 			files = (
 				FA48EA711AA7FCD300B51523 /* LoginViewController.swift in Sources */,
 				4BB027311AA7E05B00915046 /* SearchViewController.swift in Sources */,
+				FA9ABD0E1AA946EE00B5B6AF /* User.swift in Sources */,
 				4BB0272D1AA7E05B00915046 /* AppDelegate.swift in Sources */,
 				FA48EA761AA81D3E00B51523 /* LogoutViewController.swift in Sources */,
 				4BB0272F1AA7E05B00915046 /* MySeriesViewController.swift in Sources */,
