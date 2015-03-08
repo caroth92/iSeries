@@ -14,6 +14,10 @@ protocol LoginViewControllerDelegate {
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var userEmail: UITextField!
+    @IBOutlet weak var userPassword: UITextField!
+    
+    
     var delegate : LoginViewControllerDelegate?
 
     override func viewDidLoad() {
@@ -27,20 +31,30 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func loginViaEmail(sender: AnyObject) {
+        // TODO: Save and send credentials
+        
+        PFUser.logInWithUsernameInBackground(self.userEmail.text, password:self.userPassword.text) {
+            (user: PFUser!, error: NSError!) -> Void in
+            if user != nil {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let tabViewController = storyboard.instantiateViewControllerWithIdentifier("TabController") as UIViewController
+                self.presentViewController(tabViewController, animated: true, completion: nil)
+            } else {
+                println("sorry")
+            }
+        }
+    }
 
     @IBAction func loginViaFacebook(sender: AnyObject) {
         let permissionsArray = ["user_about_me"]
         
         PFFacebookUtils.logInWithPermissions(permissionsArray, block: { (user, error) -> Void in
 
-            if user.isNew {
-                println("User signed up and login")
-            } else {
+            if((error) != nil) {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let seriesVc = storyboard.instantiateViewControllerWithIdentifier("TabController") as UIViewController
                 self.presentViewController(seriesVc, animated: true, completion: nil)
-
-                println("User logged in")
             }
                 
             if self.delegate != nil {
