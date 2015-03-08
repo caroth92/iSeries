@@ -27,7 +27,6 @@
 		FA103F071AA7EA5A0072C254 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA103F061AA7EA5A0072C254 /* StoreKit.framework */; };
 		FA103F091AA7EA620072C254 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA103F081AA7EA620072C254 /* SystemConfiguration.framework */; };
 		FA103F0B1AA7EA6B0072C254 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FA103F0A1AA7EA6B0072C254 /* libsqlite3.dylib */; };
-		FA3DDF4A1AABE29E006CF85F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3DDF491AABE29E006CF85F /* SignupViewController.swift */; };
 		FA48EA711AA7FCD300B51523 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48EA6F1AA7FCD300B51523 /* LoginViewController.swift */; };
 		FA48EA741AA8183800B51523 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA48EA731AA8183800B51523 /* Login.storyboard */; };
 		FA9ABD031AA9457B00B5B6AF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9ABCFF1AA9457A00B5B6AF /* Parse.framework */; };
@@ -75,7 +74,6 @@
 		FA103F061AA7EA5A0072C254 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FA103F081AA7EA620072C254 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FA103F0A1AA7EA6B0072C254 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		FA3DDF491AABE29E006CF85F /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		FA48EA6F1AA7FCD300B51523 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA48EA731AA8183800B51523 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		FA9ABC861AA9422C00B5B6AF /* iSeries-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSeries-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -216,9 +214,8 @@
 		FA48EA6C1AA7FC6200B51523 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				FA48EA731AA8183800B51523 /* Login.storyboard */,
 				FA48EA6F1AA7FCD300B51523 /* LoginViewController.swift */,
-				FA3DDF491AABE29E006CF85F /* SignupViewController.swift */,
+				FA48EA731AA8183800B51523 /* Login.storyboard */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -325,11 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-				FA3DDF4A1AABE29E006CF85F /* SignupViewController.swift in Sources */,
-=======
 				4B139B401AABDDBF00ABE194 /* ReleasesViewController.swift in Sources */,
->>>>>>> development
 				FA48EA711AA7FCD300B51523 /* LoginViewController.swift in Sources */,
 				4BB027311AA7E05B00915046 /* SearchViewController.swift in Sources */,
 				FAC99FCD1AA94BF000F35E71 /* User.swift in Sources */,
