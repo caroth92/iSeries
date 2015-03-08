@@ -18,12 +18,5 @@ class MySeriesViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func logoutViaFacebook(sender: AnyObject) {
-        PFUser.logOut()
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let seriesVc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
-        self.presentViewController(seriesVc, animated: true, completion: nil)
-    }
 }
 
