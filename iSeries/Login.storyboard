@@ -17,8 +17,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4c-9L-kEW">
-                                <rect key="frame" x="71" y="51" width="178" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="71" y="269" width="178" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Login with Facebook">
                                     <color key="titleColor" red="0.97635973099782791" green="0.98147578008391034" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -27,21 +27,28 @@
                                     <action selector="loginViaFacebook:" destination="pQh-eC-U6m" eventType="touchUpInside" id="ZAh-d0-3RU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eli-kX-SSq">
-                                <rect key="frame" x="71" y="111" width="178" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cMd-EP-IGH">
+                                <rect key="frame" x="44" y="121" width="233" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8mu-q7-Web">
+                                <rect key="frame" x="44" y="159" width="233" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNP-kM-01p">
+                                <rect key="frame" x="188" y="197" width="89" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Login with Twitter">
-                                    <color key="titleColor" red="0.97635973099782791" green="0.98147578008391034" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.40229338034917356" blue="0.79036458333333337" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.39107928739999998" green="0.71648121840000001" blue="0.39324889530000001" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Eli-kX-SSq" firstAttribute="top" secondItem="C4c-9L-kEW" secondAttribute="bottom" constant="27" id="4Vs-1B-HLQ"/>
                             <constraint firstItem="C4c-9L-kEW" firstAttribute="centerX" secondItem="kGw-hz-aad" secondAttribute="centerX" id="G4v-Yz-1y9"/>
-                            <constraint firstItem="Eli-kX-SSq" firstAttribute="leading" secondItem="C4c-9L-kEW" secondAttribute="leading" id="kmP-TC-EYo"/>
-                            <constraint firstItem="Eli-kX-SSq" firstAttribute="trailing" secondItem="C4c-9L-kEW" secondAttribute="trailing" id="okB-ZS-KfH"/>
                             <constraint firstItem="C4c-9L-kEW" firstAttribute="centerY" secondItem="kGw-hz-aad" secondAttribute="centerY" constant="-218" id="y8e-Rx-tbA"/>
                         </constraints>
                     </view>
