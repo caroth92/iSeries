@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if PFUser.currentUser() != nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let seriesVc = storyboard.instantiateViewControllerWithIdentifier("MySeriesViewController") as UIViewController
+            let seriesVc = storyboard.instantiateViewControllerWithIdentifier("TabController") as UIViewController
             self.window?.rootViewController = seriesVc
         } else {
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
