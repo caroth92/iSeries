@@ -19,17 +19,23 @@ class LoginViewController: UIViewController {
     
     
     var delegate : LoginViewControllerDelegate?
-
+    
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    //#Mark - View Lifecycle
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    //#Mark - Login Via Email
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
     
     @IBAction func loginViaEmail(sender: AnyObject) {
         // TODO: Save and send credentials
@@ -41,11 +47,17 @@ class LoginViewController: UIViewController {
                 let tabViewController = storyboard.instantiateViewControllerWithIdentifier("TabController") as UIViewController
                 self.presentViewController(tabViewController, animated: true, completion: nil)
             } else {
-                println("sorry")
+                var alert = UIAlertController(title: "Login failed", message: "Sorry, the login failed. Please try again", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
             }
         }
     }
-
+    
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    //#Mark - Login Via Facebook
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    
     @IBAction func loginViaFacebook(sender: AnyObject) {
         let permissionsArray = ["user_about_me"]
         
