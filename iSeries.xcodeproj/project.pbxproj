@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		4BB0272D1AA7E05B00915046 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0272C1AA7E05B00915046 /* AppDelegate.swift */; };
 		4BB0272F1AA7E05B00915046 /* MySeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0272E1AA7E05B00915046 /* MySeriesViewController.swift */; };
-		4BB027311AA7E05B00915046 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB027301AA7E05B00915046 /* SearchViewController.swift */; };
 		4BB027341AA7E05B00915046 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BB027321AA7E05B00915046 /* Main.storyboard */; };
 		4BB027361AA7E05B00915046 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BB027351AA7E05B00915046 /* Images.xcassets */; };
 		4BB027391AA7E05B00915046 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BB027371AA7E05B00915046 /* LaunchScreen.xib */; };
 		4BB027451AA7E05B00915046 /* iSeriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB027441AA7E05B00915046 /* iSeriesTests.swift */; };
 		4BDF54691AABF11500068207 /* ReleasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF54681AABF11500068207 /* ReleasesViewController.swift */; };
 		4BDF546B1AABF12200068207 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF546A1AABF12200068207 /* ProfileViewController.swift */; };
+		6AB362D11ABE17AB0010DC29 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB362D01ABE17AB0010DC29 /* SearchViewController.swift */; };
 		FA103EF71AA7EA2F0072C254 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA103EF61AA7EA2F0072C254 /* AudioToolbox.framework */; };
 		FA103EF91AA7EA350072C254 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA103EF81AA7EA350072C254 /* Security.framework */; };
 		FA103EFB1AA7EA3D0072C254 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA103EFA1AA7EA3D0072C254 /* Foundation.framework */; };
@@ -37,7 +37,6 @@
 		FA9ABD0A1AA9458200B5B6AF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9ABD071AA9458200B5B6AF /* Bolts.framework */; };
 		FA9ABD0B1AA9458200B5B6AF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9ABD081AA9458200B5B6AF /* FacebookSDK.framework */; };
 		FA9ABD0C1AA9458200B5B6AF /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9ABD091AA9458200B5B6AF /* FBAudienceNetwork.framework */; };
-		FAC99FCD1AA94BF000F35E71 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC99FCC1AA94BF000F35E71 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +54,6 @@
 		4BB0272B1AA7E05B00915046 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BB0272C1AA7E05B00915046 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BB0272E1AA7E05B00915046 /* MySeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySeriesViewController.swift; sourceTree = "<group>"; };
-		4BB027301AA7E05B00915046 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4BB027331AA7E05B00915046 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4BB027351AA7E05B00915046 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4BB027381AA7E05B00915046 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -64,6 +62,7 @@
 		4BB027441AA7E05B00915046 /* iSeriesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iSeriesTests.swift; sourceTree = "<group>"; };
 		4BDF54681AABF11500068207 /* ReleasesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleasesViewController.swift; sourceTree = "<group>"; };
 		4BDF546A1AABF12200068207 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		6AB362D01ABE17AB0010DC29 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		FA103EF61AA7EA2F0072C254 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FA103EF81AA7EA350072C254 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FA103EFA1AA7EA3D0072C254 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -86,7 +85,6 @@
 		FA9ABD071AA9458200B5B6AF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Parse/Bolts.framework; sourceTree = "<group>"; };
 		FA9ABD081AA9458200B5B6AF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		FA9ABD091AA9458200B5B6AF /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = FacebookSDK/FBAudienceNetwork.framework; sourceTree = "<group>"; };
-		FAC99FCC1AA94BF000F35E71 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = iSeries/User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +126,6 @@
 		4BB0271E1AA7E05B00915046 = {
 			isa = PBXGroup;
 			children = (
-				FAC99FCC1AA94BF000F35E71 /* User.swift */,
 				4BB027291AA7E05B00915046 /* iSeries */,
 				4BB027281AA7E05B00915046 /* Products */,
 				FA103F0C1AA7EA760072C254 /* Frameworks */,
@@ -152,13 +149,13 @@
 				FA48EA6C1AA7FC6200B51523 /* Login */,
 				4BB0272C1AA7E05B00915046 /* AppDelegate.swift */,
 				4BB0272E1AA7E05B00915046 /* MySeriesViewController.swift */,
-				4BB027301AA7E05B00915046 /* SearchViewController.swift */,
 				4BB027321AA7E05B00915046 /* Main.storyboard */,
 				4BB027351AA7E05B00915046 /* Images.xcassets */,
 				4BB027371AA7E05B00915046 /* LaunchScreen.xib */,
 				4BB0272A1AA7E05B00915046 /* Supporting Files */,
 				4BDF54681AABF11500068207 /* ReleasesViewController.swift */,
 				4BDF546A1AABF12200068207 /* ProfileViewController.swift */,
+				6AB362D01ABE17AB0010DC29 /* SearchViewController.swift */,
 			);
 			path = iSeries;
 			sourceTree = "<group>";
@@ -326,9 +323,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA3DDF4A1AABE29E006CF85F /* SignupViewController.swift in Sources */,
+				6AB362D11ABE17AB0010DC29 /* SearchViewController.swift in Sources */,
 				FA48EA711AA7FCD300B51523 /* LoginViewController.swift in Sources */,
-				4BB027311AA7E05B00915046 /* SearchViewController.swift in Sources */,
-				FAC99FCD1AA94BF000F35E71 /* User.swift in Sources */,
 				4BB0272D1AA7E05B00915046 /* AppDelegate.swift in Sources */,
 				4BB0272F1AA7E05B00915046 /* MySeriesViewController.swift in Sources */,
 				4BDF546B1AABF12200068207 /* ProfileViewController.swift in Sources */,

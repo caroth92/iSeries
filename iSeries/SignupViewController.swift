@@ -14,7 +14,7 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var userPassword: UITextField!
     
     //#Mark ------------------------------------------------------------------------------------------------------------------------
-    //#Mark - View Lifecycle
+    //#Mark: - View Lifecycle
     //#Mark ------------------------------------------------------------------------------------------------------------------------
     
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ class SignupViewController: UIViewController {
     }
     
     //#Mark ------------------------------------------------------------------------------------------------------------------------
-    //#Mark - Dismiss ViewController
+    //#Mark: - Dismiss ViewController
     //#Mark ------------------------------------------------------------------------------------------------------------------------
     
     @IBAction func dismissViewController(sender: AnyObject) {
@@ -30,7 +30,7 @@ class SignupViewController: UIViewController {
     }
     
     //#Mark ------------------------------------------------------------------------------------------------------------------------
-    //#Mark - Sign Up
+    //#Mark: - Sign Up
     //#Mark ------------------------------------------------------------------------------------------------------------------------
 
     @IBAction func signUpViaEmail(sender: AnyObject) {
