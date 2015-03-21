@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
     var delegate : LoginViewControllerDelegate?
     
     //#Mark ------------------------------------------------------------------------------------------------------------------------
-    //#Mark - View Lifecycle
+    //#Mark: - View Lifecycle
     //#Mark ------------------------------------------------------------------------------------------------------------------------
     
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
     }
     
     //#Mark ------------------------------------------------------------------------------------------------------------------------
-    //#Mark - Login Via Email
+    //#Mark: - Login Via Email
     //#Mark ------------------------------------------------------------------------------------------------------------------------
     
     @IBAction func loginViaEmail(sender: AnyObject) {
@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
     }
     
     //#Mark ------------------------------------------------------------------------------------------------------------------------
-    //#Mark - Login Via Facebook
+    //#Mark: - Login Via Facebook
     //#Mark ------------------------------------------------------------------------------------------------------------------------
     
     @IBAction func loginViaFacebook(sender: AnyObject) {
