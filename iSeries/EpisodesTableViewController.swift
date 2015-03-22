@@ -18,6 +18,7 @@ class EpisodesTableViewController: UITableViewController {
         
         var query = PFQuery(className: "Episodios")
         query.whereKey("Temporada", equalTo: seasonID)
+        query.addAscendingOrder("Aired")
         
         let result = query.findObjects()
         self.episodes.addObjectsFromArray(result)
@@ -44,7 +45,8 @@ class EpisodesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("episodeCell", forIndexPath: indexPath) as UITableViewCell
 
         let object = self.episodes[indexPath.row] as PFObject
-        cell.textLabel!.text = object.valueForKey("Titulo") as NSString
+        let titulo = object.valueForKey("Titulo") as NSString
+        cell.textLabel!.text = "Episode " + String(indexPath.row+1) + " - " + titulo
         
         return cell
     }
