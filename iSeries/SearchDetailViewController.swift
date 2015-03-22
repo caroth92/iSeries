@@ -148,9 +148,31 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
         userSerie.saveInBackgroundWithBlock { (success: Bool, error: NSError!) -> Void in
             if success {
                 self.followButton!.enabled = false
+                self.fillUserHistory()
             }
         }
 
+    }
+    
+    func fillUserHistory() {
+        let userID = PFUser.currentUser().objectId as NSString
+        var episodes = NSMutableArray()
+        var queryEpisodes = PFQuery(className: "Episodio")
+        
+        for season in self.seasons {
+            var seasonID = season.objectId
+            queryEpisodes.whereKey("Temporada", equalTo: seasonID)
+            var results = queryEpisodes.findObjects()
+            episodes.addObjectsFromArray(results)
+        }
+        
+        for episode in episodes {
+            var userHistorial = PFObject(className: "UserHistorial")
+            userHistorial["UserId"] = userID
+            userHistorial["EpisodeId"] = episode.objectId
+            userHistorial.save()
+            println(episode.objectId)
+        }
     }
     
 }
