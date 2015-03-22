@@ -145,14 +145,18 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     }
     */
 
-    /*
-    // MARK: - Navigation
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    //#Mark: - Navigation
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "segue" {
+            let searchDetailViewController = segue.destinationViewController as SearchDetailViewController
+            let actualIndexPath = self.tableView.indexPathForSelectedRow()
+            let row = actualIndexPath?.row
+            let serieObject = self.searchSeries[row!] as PFObject
+            searchDetailViewController.serieID = serieObject.valueForKey("objectId") as NSString
+        }
     }
-    */
-
 }
