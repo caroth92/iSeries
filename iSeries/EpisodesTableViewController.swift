@@ -33,6 +33,7 @@ class EpisodesTableViewController: UITableViewController {
     func loadData(callback: ([PFObject]!,NSError!) -> ()) {
         var query = PFQuery(className: "Episodio")
         query.whereKey("Temporada", equalTo: seasonID)
+        query.addAscendingOrder("Aired")
         
         query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
             if error == nil {
@@ -63,7 +64,8 @@ class EpisodesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("episodeCell", forIndexPath: indexPath) as UITableViewCell
 
         let object = self.episodes[indexPath.row] as PFObject
-        cell.textLabel!.text = object.valueForKey("Titulo") as NSString
+        let titulo = object.valueForKey("Titulo") as NSString
+        cell.textLabel!.text = "Episode " + String(indexPath.row+1) + " - " + titulo
         
         return cell
     }
