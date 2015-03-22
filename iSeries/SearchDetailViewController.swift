@@ -29,47 +29,58 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var userSeries:[String] = []
-        
-        var query = PFQuery(className: "Series")
-        let serie = query.getObjectWithId(serieID)
-        
-        serieLabel.text! = serie.valueForKey("Titulo") as NSString
-        countryLabel.text! = serie.valueForKey("Country") as NSString
-        genreLabel.text! = serie.valueForKey("Genero") as NSString
-        //descriptionLabel.text! = serie.valueForKey("Descripcion") as NSString
-        
-        let userImageFile = serie.valueForKey("Imagen") as PFFile
-        userImageFile.getDataInBackgroundWithBlock {
-            (imageData: NSData!, error: NSError!) -> Void in
-            if !(error != nil) {
-                self.serieImage.image = UIImage(data:imageData)
-            }
-        }
-        
-        var queryUserSeries = PFQuery(className: "UserSeries")
-        queryUserSeries.whereKey("UserId", equalTo: PFUser.currentUser().objectId)
-        queryUserSeries.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                println(objects)
-                if let objects = objects as? [PFObject] {
-                    for object in objects {
-                        userSeries.append(object.valueForKey("SerieId") as NSString)
-                    }
-                    if contains(userSeries, self.serieID) {
-                        self.followButton!.enabled = false
-                    }
+        self.loadSerie { (object, error) -> () in
+            self.serieLabel.text! = object.valueForKey("Titulo") as NSString
+            self.countryLabel.text! = object.valueForKey("Country") as NSString
+            self.genreLabel.text! = object.valueForKey("Genero") as NSString
+            //descriptionLabel.text! = serie.valueForKey("Descripcion") as NSString
+            
+            let userImageFile = object.valueForKey("Imagen") as PFFile
+            userImageFile.getDataInBackgroundWithBlock {
+                (imageData: NSData!, error: NSError!) -> Void in
+                if !(error != nil) {
+                    self.serieImage.image = UIImage(data:imageData)
                 }
             }
-            
         }
-        println(userSeries)
         
-        var querySeason = PFQuery(className: "Temporada")
-        querySeason.whereKey("Serie", equalTo: serieID)
-        querySeason.addAscendingOrder("NumTemporada")
-        let result = querySeason.findObjects()
-        self.seasons.addObjectsFromArray(result)
+        self.loadSeasons{ (objects, error) -> () in
+            for object in objects {
+                self.seasons.addObject(object)
+            }
+            self.seasonsTable.reloadData()
+        }
+        
+        //var querySeason = PFQuery(className: "Temporada")
+        //querySeason.whereKey("Serie", equalTo: serieID)
+        //querySeason.addAscendingOrder("NumTemporada")
+        //let result = querySeason.findObjects()
+        //self.seasons.addObjectsFromArray(result)
+    }
+    
+    func loadSerie(callback: (PFObject, NSError!) -> ()) {
+        var query = PFQuery(className: "Series")
+        query.whereKey("objectId", equalTo: self.serieID)
+        
+        query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
+            if error == nil {
+                callback(objects.first as PFObject ,error)
+            }
+        }
+        
+    }
+    
+    func loadSeasons(callback: ([PFObject]!,NSError!) -> ()) {
+        var query = PFQuery(className: "Temporada")
+        query.whereKey("Serie", equalTo: serieID)
+        query.addAscendingOrder("NumTemporada")
+        
+        query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
+            if error == nil {
+                callback(objects as [PFObject] ,error)
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
