@@ -29,7 +29,6 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-<<<<<<< HEAD
         self.loadSerie { (object, error) -> () in
             self.serieLabel.text! = object.valueForKey("Titulo") as NSString
             self.countryLabel.text! = object.valueForKey("Country") as NSString
@@ -60,10 +59,6 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func loadSerie(callback: (PFObject, NSError!) -> ()) {
-=======
-        var userSeries:[String] = []
-        
->>>>>>> development
         var query = PFQuery(className: "Series")
         query.whereKey("objectId", equalTo: self.serieID)
         
@@ -86,32 +81,6 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
         
-<<<<<<< HEAD
-=======
-        var queryUserSeries = PFQuery(className: "UserSeries")
-        queryUserSeries.whereKey("UserId", equalTo: PFUser.currentUser().objectId)
-        queryUserSeries.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                println(objects)
-                if let objects = objects as? [PFObject] {
-                    for object in objects {
-                        userSeries.append(object.valueForKey("SerieId") as NSString)
-                    }
-                    if contains(userSeries, self.serieID) {
-                        self.followButton!.enabled = false
-                    }
-                }
-            }
-            
-        }
-        println(userSeries)
-        
-        var querySeason = PFQuery(className: "Temporada")
-        querySeason.whereKey("Serie", equalTo: serieID)
-        querySeason.addAscendingOrder("NumTemporada")
-        let result = querySeason.findObjects()
-        self.seasons.addObjectsFromArray(result)
->>>>>>> development
     }
 
     override func didReceiveMemoryWarning() {
