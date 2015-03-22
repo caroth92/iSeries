@@ -139,7 +139,23 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
                 self.followButton!.enabled = false
             }
         }
-
+        
+        var episodes = NSMutableArray()
+        var queryEpisodes = PFQuery(className: "Episodios")
+        for season in self.seasons {
+            println(season)
+            let seasonID = seasons.valueForKey("objectId") as NSString
+            queryEpisodes.whereKey("Temporada", equalTo: seasonID)
+            
+            queryEpisodes.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]!, error: NSError!) -> Void in
+                if error == nil {
+                    for object in objects {
+                        episodes.addObject(object)
+                    }
+                }
+            })
+        }
+        
+        println(episodes)
     }
-    
 }

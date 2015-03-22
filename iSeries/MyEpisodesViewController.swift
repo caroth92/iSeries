@@ -1,5 +1,5 @@
 //
-//  MySeriesViewController.swift
+//  MyEpisodesViewController.swift
 //  iSeries
 //
 //  Created by Alex Cristerna on 3/22/15.
@@ -8,55 +8,41 @@
 
 import UIKit
 
-class MySeriesViewController: UITableViewController {
-    
-    var userSeries = NSMutableArray()
+class MyEpisodesViewController: UITableViewController {
+
+    var serieID: NSString!
+    var seasons = NSMutableArray()
+    var episodes = NSMutableArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var query = PFQuery(className: "Series")
-        var queryUserSeries = PFQuery(className: "UserSeries")
         
-        let userID = PFUser.currentUser().objectId
-        queryUserSeries.whereKey("UserId", equalTo: userID)
-        let results = queryUserSeries.findObjects()
-        
-        for result in results {
-            let serieID = result.valueForKey("SerieId") as NSString
-            let serie = query.getObjectWithId(serieID)
-            
-            self.userSeries.addObject(serie)
-        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return self.userSeries.count
+        return self.episodes.count
     }
 
+    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("serieCell", forIndexPath: indexPath) as UITableViewCell
-        
-        let object = self.userSeries[indexPath.row] as PFObject
-        cell.textLabel!.text = object.valueForKey("Titulo") as NSString
-        
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+
+        // Configure the cell...
+
         return cell
     }
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -93,18 +79,14 @@ class MySeriesViewController: UITableViewController {
     }
     */
 
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "segue" {
-            let myEpisodesViewController = segue.destinationViewController as MyEpisodesViewController
-            let actualIndexPath = self.tableView.indexPathForSelectedRow()
-            let row = actualIndexPath?.row
-            let serieObject = self.userSeries[row!] as PFObject
-            myEpisodesViewController.serieID = serieObject.valueForKey("objectId") as NSString
-        }
-        
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
     }
+    */
 
 }
