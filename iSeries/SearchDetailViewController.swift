@@ -51,7 +51,6 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
         queryUserSeries.whereKey("UserId", equalTo: PFUser.currentUser().objectId)
         queryUserSeries.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
-                println(objects)
                 if let objects = objects as? [PFObject] {
                     for object in objects {
                         userSeries.append(object.valueForKey("SerieId") as NSString)
@@ -63,7 +62,6 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
             }
             
         }
-        println(userSeries)
         
         var querySeason = PFQuery(className: "Temporada")
         querySeason.whereKey("Serie", equalTo: serieID)
@@ -137,25 +135,30 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
         userSerie.saveInBackgroundWithBlock { (success: Bool, error: NSError!) -> Void in
             if success {
                 self.followButton!.enabled = false
+                self.fillUserHistory()
             }
         }
         
+    }
+    
+    func fillUserHistory() {
+        let userID = PFUser.currentUser().objectId as NSString
         var episodes = NSMutableArray()
-        var queryEpisodes = PFQuery(className: "Episodios")
+        var queryEpisodes = PFQuery(className: "Episodio")
+        
         for season in self.seasons {
-            println(season)
-            let seasonID = seasons.valueForKey("objectId") as NSString
+            var seasonID = season.objectId
             queryEpisodes.whereKey("Temporada", equalTo: seasonID)
-            
-            queryEpisodes.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]!, error: NSError!) -> Void in
-                if error == nil {
-                    for object in objects {
-                        episodes.addObject(object)
-                    }
-                }
-            })
+            var results = queryEpisodes.findObjects()
+            episodes.addObjectsFromArray(results)
         }
         
-        println(episodes)
+        for episode in episodes {
+            var userHistorial = PFObject(className: "UserHistorial")
+            userHistorial["UserId"] = userID
+            userHistorial["EpisodeId"] = episode.objectId
+            userHistorial.save()
+            println(episode.objectId)
+        }
     }
 }

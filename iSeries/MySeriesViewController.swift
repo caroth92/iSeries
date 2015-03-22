@@ -15,6 +15,9 @@ class MySeriesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         var query = PFQuery(className: "Series")
         var queryUserSeries = PFQuery(className: "UserSeries")
         
@@ -22,10 +25,10 @@ class MySeriesViewController: UITableViewController {
         queryUserSeries.whereKey("UserId", equalTo: userID)
         let results = queryUserSeries.findObjects()
         
+        self.userSeries.removeAllObjects()
         for result in results {
             let serieID = result.valueForKey("SerieId") as NSString
             let serie = query.getObjectWithId(serieID)
-            
             self.userSeries.addObject(serie)
         }
     }

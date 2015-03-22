@@ -17,7 +17,22 @@ class MyEpisodesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var userEpisodes:[String] = []
         
+        var querySeason = PFQuery(className: "Temporada")
+        querySeason.whereKey("Serie", equalTo: serieID)
+        let result = querySeason.findObjects()
+        self.seasons.addObjectsFromArray(result)
+        
+        var queryEpisodes = PFQuery(className: "Episodio")
+        
+        for season in self.seasons {
+            queryEpisodes.whereKey("Temporada", equalTo: season.objectId)
+            let results = queryEpisodes.findObjects()
+            self.episodes.addObjectsFromArray(results)
+        }
+  
+        println(episodes.count)
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,15 +49,14 @@ class MyEpisodesViewController: UITableViewController {
         return self.episodes.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("episodeCell", forIndexPath: indexPath) as UITableViewCell
 
-        // Configure the cell...
+        let object = self.episodes[indexPath.row] as PFObject
+        cell.textLabel!.text = object.valueForKey("Titulo") as NSString
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -79,14 +93,11 @@ class MyEpisodesViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        
     }
-    */
 
 }

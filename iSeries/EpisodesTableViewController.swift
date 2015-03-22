@@ -16,7 +16,7 @@ class EpisodesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var query = PFQuery(className: "Episodios")
+        var query = PFQuery(className: "Episodio")
         query.whereKey("Temporada", equalTo: seasonID)
         query.addAscendingOrder("Aired")
         
