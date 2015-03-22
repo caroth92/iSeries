@@ -16,11 +16,30 @@ class EpisodesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var query = PFQuery(className: "Episodios")
+        self.loadData{ (objects, error) -> () in
+            for object in objects {
+                self.episodes.addObject(object)
+            }
+            self.tableView.reloadData()
+        }
+        
+//        var query = PFQuery(className: "Episodios")
+//        query.whereKey("Temporada", equalTo: seasonID)
+//        
+//        let result = query.findObjects()
+//        self.episodes.addObjectsFromArray(result)
+    }
+    
+    func loadData(callback: ([PFObject]!,NSError!) -> ()) {
+        var query = PFQuery(className: "Episodio")
         query.whereKey("Temporada", equalTo: seasonID)
         
-        let result = query.findObjects()
-        self.episodes.addObjectsFromArray(result)
+        query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
+            if error == nil {
+                callback(objects as [PFObject] ,error)
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -26,24 +26,35 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.loadData{ (objects, error) -> () in
+            for object in objects {
+                self.searchSeries.addObject(object)
+                self.seriesArray.append(object.valueForKey("Titulo") as NSString)
+            }
+            self.tableView.reloadData()
+        }
+        
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        
-        var query = PFQuery(className: "Series")
-        query.orderByAscending("Titulo")
-        let results = query.findObjects()
-        
-        self.searchSeries.addObjectsFromArray(results)
-        
-        for i in self.searchSeries {
-            seriesArray.append(i.valueForKey("Titulo") as NSString)
-        }
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
+    }
+    
+    func loadData(callback: ([PFObject]!,NSError!) -> ()) {
+        var query = PFQuery(className: "Series")
+        query.orderByAscending("Titulo")
+        
+        query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
+            if error == nil {
+                callback(objects as [PFObject] ,error)
+            }
+        }
+
     }
 
     //#Mark ------------------------------------------------------------------------------------------------------------------------
