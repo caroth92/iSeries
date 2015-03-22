@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--My Series-->
@@ -185,6 +185,7 @@
                         <outlet property="contentView" destination="S8o-4X-V4s" id="Lz5-fV-5RK"/>
                         <outlet property="countryLabel" destination="Wcl-wM-5An" id="v1K-lC-9iS"/>
                         <outlet property="descriptionLabel" destination="Mga-1g-mQ6" id="FPt-Pq-O7g"/>
+                        <outlet property="followButton" destination="Vum-7Y-L4w" id="dsm-hf-wRi"/>
                         <outlet property="genreLabel" destination="k6t-tK-mxn" id="ISF-XJ-cPQ"/>
                         <outlet property="scrollView" destination="5AA-9h-yIW" id="ck2-fw-hMd"/>
                         <outlet property="seasonsTable" destination="amR-4o-jOv" id="KhT-Xq-iyd"/>

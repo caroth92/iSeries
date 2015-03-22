@@ -13,6 +13,8 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
     var serieID: NSString!
     var seasons = NSMutableArray()
     
+    
+    @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var serieLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
@@ -26,6 +28,8 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var userSeries:[String] = []
         
         var query = PFQuery(className: "Series")
         let serie = query.getObjectWithId(serieID)
@@ -42,6 +46,24 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
                 self.serieImage.image = UIImage(data:imageData)
             }
         }
+        
+        var queryUserSeries = PFQuery(className: "UserSeries")
+        queryUserSeries.whereKey("UserId", equalTo: PFUser.currentUser().objectId)
+        queryUserSeries.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                println(objects)
+                if let objects = objects as? [PFObject] {
+                    for object in objects {
+                        userSeries.append(object.valueForKey("SerieId") as NSString)
+                    }
+                    if contains(userSeries, self.serieID) {
+                        self.followButton!.enabled = false
+                    }
+                }
+            }
+            
+        }
+        println(userSeries)
         
         var querySeason = PFQuery(className: "Temporada")
         querySeason.whereKey("Serie", equalTo: serieID)
@@ -81,7 +103,8 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
         let cell = seasonsTable.dequeueReusableCellWithIdentifier("seasonCell", forIndexPath: indexPath) as UITableViewCell
         
         let object = self.seasons[indexPath.row] as PFObject
-        cell.textLabel!.text = object.valueForKey("NumTemporada") as NSString
+        let numTemporada = object.valueForKey("NumTemporada") as NSString
+        cell.textLabel!.text = "Season " + numTemporada
         
         return cell
     }
@@ -101,8 +124,22 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    //#Mark: - Add serie
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    
     @IBAction func followSerie(sender: AnyObject) {
+        let userID = PFUser.currentUser().objectId as NSString
         
+        var userSerie = PFObject(className: "UserSeries")
+        userSerie["UserId"] = userID
+        userSerie["SerieId"] = self.serieID
+        userSerie.saveInBackgroundWithBlock { (success: Bool, error: NSError!) -> Void in
+            if success {
+                self.followButton!.enabled = false
+            }
+        }
+
     }
     
 }
