@@ -13,9 +13,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        Parse.setApplicationId("9L2hyftFykqEvu6EgpJdnMhxHIFnTAngAWngsnBU", clientKey: "xBNxZuT4x9dWjN2TkNe3N0kuh65YrZ0YDZ5pWf8X")
+        PFFacebookUtils.initializeFacebook()
+        
+        if PFUser.currentUser() != nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let seriesVc = storyboard.instantiateViewControllerWithIdentifier("TabController") as! UIViewController
+            self.window?.rootViewController = seriesVc
+        } else {
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let seriesVc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! UIViewController
+            self.window?.rootViewController = seriesVc
+        }
+        
         return true
     }
 
@@ -34,13 +45,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        PFFacebookUtils.session()!.close()
     }
-
-
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication, withSession: PFFacebookUtils.session())
+    }
 }
 
