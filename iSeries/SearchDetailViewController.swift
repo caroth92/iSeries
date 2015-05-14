@@ -48,7 +48,7 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
         }
         
         var queryUserSeries = PFQuery(className: "UserSeries")
-        queryUserSeries.whereKey("UserId", equalTo: PFUser.currentUser().objectId)
+        queryUserSeries.whereKey("UserId", equalTo: PFUser.currentUser()!.objectId!)
         queryUserSeries.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 if let objects = objects as? [PFObject] {
@@ -67,7 +67,7 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
         querySeason.whereKey("Serie", equalTo: serieID)
         querySeason.addAscendingOrder("NumTemporada")
         let result = querySeason.findObjects()
-        self.seasons.addObjectsFromArray(result)
+        self.seasons.addObjectsFromArray(result!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,11 +98,11 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(seasonsTable: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = seasonsTable.dequeueReusableCellWithIdentifier("seasonCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = seasonsTable.dequeueReusableCellWithIdentifier("seasonCell", forIndexPath: indexPath) as! UITableViewCell
         
-        let object = self.seasons[indexPath.row] as PFObject
-        let numTemporada = object.valueForKey("NumTemporada") as NSString
-        cell.textLabel!.text = "Season " + numTemporada
+        let object = self.seasons[indexPath.row] as! PFObject
+        let numTemporada = object.valueForKey("NumTemporada") as! NSString
+        cell.textLabel!.text = "Season " + (numTemporada as String)
         
         return cell
     }
@@ -114,11 +114,11 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segue" {
-            let episodeViewController = segue.destinationViewController as EpisodesTableViewController
+            let episodeViewController = segue.destinationViewController as! EpisodesTableViewController
             let actualIndexPath = self.seasonsTable.indexPathForSelectedRow()
             let row = actualIndexPath?.row
-            let serieObject = self.seasons[row!] as PFObject
-            episodeViewController.seasonID = serieObject.valueForKey("objectId") as NSString
+            let serieObject = self.seasons[row!] as! PFObject
+            episodeViewController.seasonID = serieObject.valueForKey("objectId") as! NSString
         }
     }
     
@@ -127,7 +127,7 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
     //#Mark ------------------------------------------------------------------------------------------------------------------------
     
     @IBAction func followSerie(sender: AnyObject) {
-        let userID = PFUser.currentUser().objectId as NSString
+        let userID = PFUser.currentUser()!.objectId as NSString
         
         var userSerie = PFObject(className: "UserSeries")
         userSerie["UserId"] = userID
@@ -142,7 +142,7 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func fillUserHistory() {
-        let userID = PFUser.currentUser().objectId as NSString
+        let userID = PFUser.currentUser()!.objectId as NSString
         var episodes = NSMutableArray()
         var queryEpisodes = PFQuery(className: "Episodio")
         
@@ -150,7 +150,7 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
             var seasonID = season.objectId
             queryEpisodes.whereKey("Temporada", equalTo: seasonID)
             var results = queryEpisodes.findObjects()
-            episodes.addObjectsFromArray(results)
+            episodes.addObjectsFromArray(results!)
         }
         
         for episode in episodes {

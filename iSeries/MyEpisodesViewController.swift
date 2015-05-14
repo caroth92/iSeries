@@ -22,14 +22,14 @@ class MyEpisodesViewController: UITableViewController {
         var querySeason = PFQuery(className: "Temporada")
         querySeason.whereKey("Serie", equalTo: serieID)
         let result = querySeason.findObjects()
-        self.seasons.addObjectsFromArray(result)
+        self.seasons.addObjectsFromArray(result!)
         
         var queryEpisodes = PFQuery(className: "Episodio")
         
         for season in self.seasons {
             queryEpisodes.whereKey("Temporada", equalTo: season.objectId)
             let results = queryEpisodes.findObjects()
-            self.episodes.addObjectsFromArray(results)
+            self.episodes.addObjectsFromArray(results!)
         }
   
         println(episodes.count)
@@ -50,10 +50,10 @@ class MyEpisodesViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("episodeCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("episodeCell", forIndexPath: indexPath) as! UITableViewCell
 
-        let object = self.episodes[indexPath.row] as PFObject
-        cell.textLabel!.text = object.valueForKey("Titulo") as NSString
+        let object = self.episodes[indexPath.row] as! PFObject
+        cell.textLabel!.text = object.valueForKey("Titulo") as? String
 
         return cell
     }

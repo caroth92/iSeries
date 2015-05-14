@@ -65,7 +65,7 @@ class LoginViewController: UIViewController {
 
             if((error) != nil) {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let seriesVc = storyboard.instantiateViewControllerWithIdentifier("TabController") as UIViewController
+                let seriesVc = storyboard.instantiateViewControllerWithIdentifier("TabController") as! UIViewController
                 self.presentViewController(seriesVc, animated: true, completion: nil)
             }
                 

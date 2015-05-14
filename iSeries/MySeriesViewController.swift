@@ -21,8 +21,8 @@ class MySeriesViewController: UITableViewController {
         var query = PFQuery(className: "Series")
         var queryUserSeries = PFQuery(className: "UserSeries")
         
-        let userID = PFUser.currentUser().objectId
-        queryUserSeries.whereKey("UserId", equalTo: userID)
+        let userID = PFUser.currentUser()!.objectId
+        queryUserSeries.whereKey("UserId", equalTo: userID!)
         let results = queryUserSeries.findObjects()
         
         self.userSeries.removeAllObjects()
@@ -53,10 +53,10 @@ class MySeriesViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("serieCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("serieCell", forIndexPath: indexPath) as! UITableViewCell
         
-        let object = self.userSeries[indexPath.row] as PFObject
-        cell.textLabel!.text = object.valueForKey("Titulo") as NSString
+        let object = self.userSeries[indexPath.row] as! PFObject
+        cell.textLabel!.text = object.valueForKey("Titulo") as? String
         
         return cell
     }
@@ -101,11 +101,11 @@ class MySeriesViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segue" {
-            let myEpisodesViewController = segue.destinationViewController as MyEpisodesViewController
+            let myEpisodesViewController = segue.destinationViewController as! MyEpisodesViewController
             let actualIndexPath = self.tableView.indexPathForSelectedRow()
             let row = actualIndexPath?.row
-            let serieObject = self.userSeries[row!] as PFObject
-            myEpisodesViewController.serieID = serieObject.valueForKey("objectId") as NSString
+            let serieObject = self.userSeries[row!] as! PFObject
+            myEpisodesViewController.serieID = serieObject.valueForKey("objectId") as! NSString
         }
         
     }

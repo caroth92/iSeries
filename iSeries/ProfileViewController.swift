@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController {
     @IBAction func logout(sender: AnyObject) {
         PFUser.logOut()
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let seriesVc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
+        let seriesVc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! UIViewController
         self.presentViewController(seriesVc, animated: true, completion: nil)
     }
 

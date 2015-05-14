@@ -21,7 +21,7 @@ class EpisodesTableViewController: UITableViewController {
         query.addAscendingOrder("Aired")
         
         let result = query.findObjects()
-        self.episodes.addObjectsFromArray(result)
+        self.episodes.addObjectsFromArray(result!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,11 +42,11 @@ class EpisodesTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("episodeCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("episodeCell", forIndexPath: indexPath) as! UITableViewCell
 
-        let object = self.episodes[indexPath.row] as PFObject
-        let titulo = object.valueForKey("Titulo") as NSString
-        cell.textLabel!.text = "Episode " + String(indexPath.row+1) + " - " + titulo
+        let object = self.episodes[indexPath.row] as! PFObject
+        let titulo = object.valueForKey("Titulo") as! NSString
+        cell.textLabel!.text = "Episode " + String(indexPath.row+1) + " - " + (titulo as String)
         
         return cell
     }
@@ -94,11 +94,11 @@ class EpisodesTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segue" {
-            let episodeDetailViewController = segue.destinationViewController as EpisodeDetailViewController
+            let episodeDetailViewController = segue.destinationViewController as! EpisodeDetailViewController
             let actualIndexPath = self.tableView.indexPathForSelectedRow()
             let row = actualIndexPath?.row
-            let serieObject = self.episodes[row!] as PFObject
-            episodeDetailViewController.episodeID = serieObject.valueForKey("objectId") as NSString
+            let serieObject = self.episodes[row!] as! PFObject
+            episodeDetailViewController.episodeID = serieObject.valueForKey("objectId") as! NSString
         }
     }
 }

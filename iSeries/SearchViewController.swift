@@ -34,10 +34,10 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
         query.orderByAscending("Titulo")
         let results = query.findObjects()
         
-        self.searchSeries.addObjectsFromArray(results)
+        self.searchSeries.addObjectsFromArray(results!)
         
         for i in self.searchSeries {
-            seriesArray.append(i.valueForKey("Titulo") as NSString)
+            seriesArray.append(i.valueForKey("Titulo") as! String)
         }
     }
 
@@ -63,7 +63,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("searchCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("searchCell", forIndexPath: indexPath) as! UITableViewCell
         
         if (searchActive) {
             cell.textLabel!.text = filtered[indexPath.row]
@@ -152,11 +152,11 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segue" {
-            let searchDetailViewController = segue.destinationViewController as SearchDetailViewController
+            let searchDetailViewController = segue.destinationViewController as! SearchDetailViewController
             let actualIndexPath = self.tableView.indexPathForSelectedRow()
             let row = actualIndexPath?.row
-            let serieObject = self.searchSeries[row!] as PFObject
-            searchDetailViewController.serieID = serieObject.valueForKey("objectId") as NSString
+            let serieObject = self.searchSeries[row!] as! PFObject
+            searchDetailViewController.serieID = serieObject.valueForKey("objectId") as! NSString
         }
     }
 }

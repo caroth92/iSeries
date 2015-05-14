@@ -19,11 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if PFUser.currentUser() != nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let seriesVc = storyboard.instantiateViewControllerWithIdentifier("TabController") as UIViewController
+            let seriesVc = storyboard.instantiateViewControllerWithIdentifier("TabController") as! UIViewController
             self.window?.rootViewController = seriesVc
         } else {
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let seriesVc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
+            let seriesVc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! UIViewController
             self.window?.rootViewController = seriesVc
         }
         
@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        PFFacebookUtils.session().close()
+        PFFacebookUtils.session()!.close()
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
