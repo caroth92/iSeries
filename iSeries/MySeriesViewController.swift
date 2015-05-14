@@ -18,7 +18,7 @@ class MySeriesViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        var query = PFQuery(className: "Series")
+        /*var query = PFQuery(className: "Series")
         var queryUserSeries = PFQuery(className: "UserSeries")
         
         let userID = PFUser.currentUser()!.objectId
@@ -30,6 +30,30 @@ class MySeriesViewController: UITableViewController {
             let serieID = result.valueForKey("SerieId") as NSString
             let serie = query.getObjectWithId(serieID)
             self.userSeries.addObject(serie)
+        }*/
+        super.viewWillAppear(animated)
+        
+        self.userSeries.removeAllObjects()
+        
+        self.loadUserSeries{(objects, error) -> () in
+            for object in objects {
+                var query = PFQuery(className: "Series")
+                let serieID = object.valueForKey("SerieId") as! NSString
+                let serie = query.getObjectWithId(serieID as String)
+                self.userSeries.addObject(serie!)
+            }
+            self.tableView.reloadData()
+        }
+    }
+    
+    func loadUserSeries(callback: ([PFObject]!,NSError!) -> ()) {
+        var query = PFQuery(className: "UserSeries")
+        query.whereKey("UserId", equalTo: PFUser.currentUser()!.objectId!)
+        
+        query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]?,error:NSError?) -> Void in
+            if error == nil {
+                callback(objects as! [PFObject], error)
+            }
         }
     }
 

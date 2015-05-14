@@ -41,11 +41,11 @@ class SignupViewController: UIViewController {
         
         user.signUpInBackgroundWithBlock {
             
-            (succeeded: Bool!, error: NSError!) -> Void in
+            (succeeded: Bool, error: NSError?) -> Void in
         
             if error == nil {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let tabViewController = storyboard.instantiateViewControllerWithIdentifier("TabController") as UIViewController
+                let tabViewController = storyboard.instantiateViewControllerWithIdentifier("TabController") as! UIViewController
                 self.presentViewController(tabViewController, animated: true, completion: nil)
             } else {
                 var alert = UIAlertController(title: "Error", message: "Sorry, we were not able to create your account. Please try again", preferredStyle: UIAlertControllerStyle.Alert)

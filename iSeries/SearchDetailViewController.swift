@@ -31,7 +31,22 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
         
         var userSeries:[String] = []
         
-        var query = PFQuery(className: "Series")
+        self.loadSerie { (object, error) -> () in
+            self.serieLabel.text! = object.valueForKey("Titulo") as! String
+            self.countryLabel.text! = object.valueForKey("Country") as! String
+            self.genreLabel.text! = object.valueForKey("Genero") as! String
+            //descriptionLabel.text! = serie.valueForKey("Descripcion") as NSString
+            
+            let userImageFile = object.valueForKey("Imagen") as! PFFile
+            userImageFile.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
+                if !(error != nil) {
+                    self.serieImage.image = UIImage(data:imageData!)
+                }
+            }
+        }
+        
+        /*var query = PFQuery(className: "Series")
         let serie = query.getObjectWithId(serieID)
         
         serieLabel.text! = serie.valueForKey("Titulo") as NSString
@@ -45,17 +60,17 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
             if !(error != nil) {
                 self.serieImage.image = UIImage(data:imageData)
             }
-        }
+        }*/
         
         var queryUserSeries = PFQuery(className: "UserSeries")
         queryUserSeries.whereKey("UserId", equalTo: PFUser.currentUser()!.objectId!)
-        queryUserSeries.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+        queryUserSeries.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 if let objects = objects as? [PFObject] {
                     for object in objects {
-                        userSeries.append(object.valueForKey("SerieId") as NSString)
+                        userSeries.append(object.valueForKey("SerieId") as! String)
                     }
-                    if contains(userSeries, self.serieID) {
+                    if contains(userSeries, self.serieID! as String) {
                         self.followButton!.enabled = false
                     }
                 }
@@ -68,6 +83,18 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
         querySeason.addAscendingOrder("NumTemporada")
         let result = querySeason.findObjects()
         self.seasons.addObjectsFromArray(result!)
+    }
+    
+    func loadSerie(callback: (PFObject, NSError!) -> ()) {
+        var query = PFQuery(className: "Series")
+        query.whereKey("objectId", equalTo: self.serieID)
+        
+        query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]?, error:NSError?) -> Void in
+            if error == nil {
+                callback((objects!.first as? PFObject)!, error)
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,12 +154,12 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
     //#Mark ------------------------------------------------------------------------------------------------------------------------
     
     @IBAction func followSerie(sender: AnyObject) {
-        let userID = PFUser.currentUser()!.objectId as NSString
+        let userID = (PFUser.currentUser()!.objectId as String?)!
         
         var userSerie = PFObject(className: "UserSeries")
         userSerie["UserId"] = userID
         userSerie["SerieId"] = self.serieID
-        userSerie.saveInBackgroundWithBlock { (success: Bool, error: NSError!) -> Void in
+        userSerie.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             if success {
                 self.followButton!.enabled = false
                 self.fillUserHistory()
@@ -142,12 +169,12 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func fillUserHistory() {
-        let userID = PFUser.currentUser()!.objectId as NSString
+        let userID = (PFUser.currentUser()!.objectId as NSString?)!
         var episodes = NSMutableArray()
         var queryEpisodes = PFQuery(className: "Episodio")
         
         for season in self.seasons {
-            var seasonID = season.objectId
+            var seasonID = (season.objectId as String?)!
             queryEpisodes.whereKey("Temporada", equalTo: seasonID)
             var results = queryEpisodes.findObjects()
             episodes.addObjectsFromArray(results!)

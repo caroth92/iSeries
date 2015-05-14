@@ -41,10 +41,10 @@ class LoginViewController: UIViewController {
         // TODO: Save and send credentials
         
         PFUser.logInWithUsernameInBackground(self.userEmail.text, password:self.userPassword.text) {
-            (user: PFUser!, error: NSError!) -> Void in
+            (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let tabViewController = storyboard.instantiateViewControllerWithIdentifier("TabController") as UIViewController
+                let tabViewController = storyboard.instantiateViewControllerWithIdentifier("TabController") as! UIViewController
                 self.presentViewController(tabViewController, animated: true, completion: nil)
             } else {
                 var alert = UIAlertController(title: "Login failed", message: "Sorry, the login failed. Please try again", preferredStyle: UIAlertControllerStyle.Alert)

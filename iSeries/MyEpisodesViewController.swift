@@ -27,7 +27,7 @@ class MyEpisodesViewController: UITableViewController {
         var queryEpisodes = PFQuery(className: "Episodio")
         
         for season in self.seasons {
-            queryEpisodes.whereKey("Temporada", equalTo: season.objectId)
+            queryEpisodes.whereKey("Temporada", equalTo: (season.objectId as String?)!)
             let results = queryEpisodes.findObjects()
             self.episodes.addObjectsFromArray(results!)
         }
