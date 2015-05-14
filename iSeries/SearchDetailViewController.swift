@@ -2,7 +2,7 @@
 //  SearchDetailViewController.swift
 //  iSeries
 //
-//  Created by Alex Cristerna on 3/21/15.
+//  Created by Carolina De La Torre on 3/21/15.
 //  Copyright (c) 2015 ITESM. All rights reserved.
 //
 
