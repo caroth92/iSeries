@@ -34,8 +34,6 @@ class ProfileViewController: UIViewController {
                             if error == nil {
                                 var picture = PFFile(data: data)
                                 PFUser.currentUser()!.setObject(picture, forKey: "profilePicture")
-                                
-                                self.userPicture = UIImage(contentsOfFile: picture)
                             } else {
                                 println("Error: \(error.localizedDescription)")
                             }
