@@ -89,10 +89,6 @@ class MyEpisodesViewController: PFQueryTableViewController {
         return cell
     }
     
-    /*
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    }
-    
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
         
         var watchedAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Watched" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
@@ -102,8 +98,11 @@ class MyEpisodesViewController: PFQueryTableViewController {
         
         return [watchedAction]
     }
+
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    }
     
-    // Override to support conditional editing of the table view.
+    /* Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
     // Return NO if you do not want the specified item to be editable.
     return true
