@@ -8,16 +8,31 @@
 
 import UIKit
 
-class MyEpisodesViewController: UITableViewController {
+class MyEpisodesViewController: PFQueryTableViewController {
     
+    var serie: PFObject!
     var serieID: NSString!
     var seasons = NSMutableArray()
     var episodes = NSMutableArray()
     
+    override init(style: UITableViewStyle, className: String!) {
+        super.init(style: style, className: className)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        // Configure the PFQueryTableView
+        self.parseClassName = "UserHistorial"
+        self.textKey = "Titulo"
+        self.pullToRefreshEnabled = true
+        self.paginationEnabled = false
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var userEpisodes:[String] = []
+        /*var userEpisodes:[String] = []
         
         var querySeason = PFQuery(className: "Temporada")
         querySeason.whereKey("Serie", equalTo: serieID)
@@ -32,32 +47,49 @@ class MyEpisodesViewController: UITableViewController {
             self.episodes.addObjectsFromArray(results!)
         }
         
-        println(episodes.count)
+        println(episodes.count)*/
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: - Table view data source
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    //#Mark: - Parse table view data source
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func queryForTable() -> PFQuery {
+        var query = PFQuery(className: "UserHistorial")
+        query.whereKey("user", equalTo: PFUser.currentUser()!)
+        query.includeKey("episodio")
+        
+        return query
+    }
+    
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    //#Mark: - Table view data source
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    
+    /*override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.episodes.count
     }
+    */
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("episodeCell", forIndexPath: indexPath) as! UITableViewCell
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("episodeCell", forIndexPath: indexPath) as! PFTableViewCell
         
-        let object = self.episodes[indexPath.row] as! PFObject
-        cell.textLabel!.text = object.valueForKey("Titulo") as? String
+        if let title = object?["episodio"]?["Titulo"] as? String {
+            cell.textLabel!.text = title
+        }
         
         return cell
     }
     
+    /*
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     }
     
@@ -71,7 +103,6 @@ class MyEpisodesViewController: UITableViewController {
         return [watchedAction]
     }
     
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
     // Return NO if you do not want the specified item to be editable.
