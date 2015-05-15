@@ -16,6 +16,7 @@
 		4BDF546B1AABF12200068207 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF546A1AABF12200068207 /* ProfileViewController.swift */; };
 		6A0288421ABEA8F900E0C5CD /* MySeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0288411ABEA8F900E0C5CD /* MySeriesViewController.swift */; };
 		6A0288441ABEABAA00E0C5CD /* MyEpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0288431ABEABAA00E0C5CD /* MyEpisodesViewController.swift */; };
+		6A02C67F1B057B7C0021DEA6 /* DiscoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A02C67E1B057B7C0021DEA6 /* DiscoCell.swift */; };
 		6A888BB41ABE6719003E2D07 /* EpisodesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A888BB31ABE6719003E2D07 /* EpisodesTableViewController.swift */; };
 		6A888BB61ABE699A003E2D07 /* EpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A888BB51ABE699A003E2D07 /* EpisodeDetailViewController.swift */; };
 		6AB362D11ABE17AB0010DC29 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB362D01ABE17AB0010DC29 /* SearchViewController.swift */; };
@@ -67,6 +68,7 @@
 		4BDF546A1AABF12200068207 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6A0288411ABEA8F900E0C5CD /* MySeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySeriesViewController.swift; sourceTree = "<group>"; };
 		6A0288431ABEABAA00E0C5CD /* MyEpisodesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEpisodesViewController.swift; sourceTree = "<group>"; };
+		6A02C67E1B057B7C0021DEA6 /* DiscoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoCell.swift; sourceTree = "<group>"; };
 		6A888BB31ABE6719003E2D07 /* EpisodesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodesTableViewController.swift; sourceTree = "<group>"; };
 		6A888BB51ABE699A003E2D07 /* EpisodeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewController.swift; sourceTree = "<group>"; };
 		6AB362D01ABE17AB0010DC29 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				6A888BB51ABE699A003E2D07 /* EpisodeDetailViewController.swift */,
 				6A0288411ABEA8F900E0C5CD /* MySeriesViewController.swift */,
 				6A0288431ABEABAA00E0C5CD /* MyEpisodesViewController.swift */,
+				6A02C67E1B057B7C0021DEA6 /* DiscoCell.swift */,
 			);
 			path = iSeries;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A02C67F1B057B7C0021DEA6 /* DiscoCell.swift in Sources */,
 				FA3DDF4A1AABE29E006CF85F /* SignupViewController.swift in Sources */,
 				6A0288441ABEABAA00E0C5CD /* MyEpisodesViewController.swift in Sources */,
 				6AB362D11ABE17AB0010DC29 /* SearchViewController.swift in Sources */,
