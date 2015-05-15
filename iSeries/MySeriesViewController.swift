@@ -20,7 +20,7 @@ class MySeriesViewController: PFQueryTableViewController {
         super.init(coder: aDecoder)
         
         // Configure the PFQueryTableView
-        self.parseClassName = "Series"
+        self.parseClassName = "UserSeries"
         self.textKey = "Titulo"
         self.pullToRefreshEnabled = true
         self.paginationEnabled = false
@@ -151,16 +151,9 @@ class MySeriesViewController: PFQueryTableViewController {
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    /* In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "segue" {
-            let myEpisodesViewController = segue.destinationViewController as! MyEpisodesViewController
-            let actualIndexPath = self.tableView.indexPathForSelectedRow()
-            let row = actualIndexPath?.row
-            let serieObject = self.userSeries[row!] as! PFObject
-            myEpisodesViewController.serieID = serieObject.valueForKey("objectId") as! NSString
-        }
         
-    }
+    }*/
 
 }
