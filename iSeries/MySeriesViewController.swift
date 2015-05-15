@@ -8,17 +8,31 @@
 
 import UIKit
 
-class MySeriesViewController: UITableViewController {
+class MySeriesViewController: PFQueryTableViewController {
     
     var userSeries = NSMutableArray()
     
+    override init(style: UITableViewStyle, className: String!) {
+        super.init(style: style, className: className)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        // Configure the PFQueryTableView
+        self.parseClassName = "Series"
+        self.textKey = "Titulo"
+        self.pullToRefreshEnabled = true
+        self.paginationEnabled = false
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
-    override func viewWillAppear(animated: Bool) {
-        /*var query = PFQuery(className: "Series")
+    /*override func viewWillAppear(animated: Bool) {
+        var query = PFQuery(className: "Series")
         var queryUserSeries = PFQuery(className: "UserSeries")
         
         let userID = PFUser.currentUser()!.objectId
@@ -30,7 +44,7 @@ class MySeriesViewController: UITableViewController {
             let serieID = result.valueForKey("SerieId") as NSString
             let serie = query.getObjectWithId(serieID)
             self.userSeries.addObject(serie)
-        }*/
+        }
         super.viewWillAppear(animated)
         
         self.userSeries.removeAllObjects()
@@ -55,16 +69,30 @@ class MySeriesViewController: UITableViewController {
                 callback(objects as! [PFObject], error)
             }
         }
-    }
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    //#Mark: - Parse table view data source
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    
+    override func queryForTable() -> PFQuery {
+        var query = PFQuery(className: "UserSeries")
+        query.whereKey("user", equalTo: PFUser.currentUser()!)
+        query.includeKey("serie")
+        
+        return query
+    }
 
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    //#Mark: - Table view data source
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    
+    /*override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
@@ -74,13 +102,14 @@ class MySeriesViewController: UITableViewController {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return self.userSeries.count
-    }
+    }*/
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("serieCell", forIndexPath: indexPath) as! UITableViewCell
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("serieCell", forIndexPath: indexPath) as! PFTableViewCell
         
-        let object = self.userSeries[indexPath.row] as! PFObject
-        cell.textLabel!.text = object.valueForKey("Titulo") as? String
+        if let title = object?["serie"]?["Titulo"] as? String {
+            cell.textLabel!.text = title
+        }
         
         return cell
     }

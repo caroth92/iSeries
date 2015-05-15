@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController, UISearchBarDelegate {
+class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -22,23 +22,32 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     //#Mark ------------------------------------------------------------------------------------------------------------------------
     //#Mark: - View Lifecycle
     //#Mark ------------------------------------------------------------------------------------------------------------------------
-    
+    override init(style: UITableViewStyle, className: String!) {
+        super.init(style: style, className: className)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        // Configure the PFQueryTableView
+        self.parseClassName = "Series"
+        self.textKey = "Titulo"
+        self.pullToRefreshEnabled = true
+        self.paginationEnabled = false
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
         searchBar.delegate = self
         
-        var query = PFQuery(className: "Series")
-        query.orderByAscending("Titulo")
-        let results = query.findObjects()
-        
+        /*
         self.searchSeries.addObjectsFromArray(results!)
         
         for i in self.searchSeries {
             seriesArray.append(i.valueForKey("Titulo") as! String)
         }
+        */
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,28 +56,27 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     }
 
     //#Mark ------------------------------------------------------------------------------------------------------------------------
+    //#Mark: - Parse table view data source
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    
+    override func queryForTable() -> PFQuery {
+        var query = PFQuery(className: "Series")
+        query.orderByAscending("Titulo")
+        return query
+    }
+    
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
     //#Mark: - Table view data source
     //#Mark ------------------------------------------------------------------------------------------------------------------------
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (searchActive) {
-            return filtered.count
-        }
-        
-        return self.searchSeries.count
-    }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("searchCell", forIndexPath: indexPath) as! UITableViewCell
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("searchCell", forIndexPath: indexPath) as! PFTableViewCell
         
         if (searchActive) {
             cell.textLabel!.text = filtered[indexPath.row]
         } else {
-            cell.textLabel!.text = self.seriesArray[indexPath.row]
+            if let title = object?["Titulo"] as? String {
+                cell.textLabel!.text = title
+            }
         }
         
         return cell
