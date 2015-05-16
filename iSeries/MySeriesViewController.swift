@@ -151,9 +151,19 @@ class MySeriesViewController: PFQueryTableViewController {
 
     // MARK: - Navigation
 
-    /* In a storyboard-based application, you will often want to do a little preparation before navigation
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-    }*/
+        // Get the new view controller using [segue destinationViewController].
+        var myEpisodesViewController = segue.destinationViewController as! MyEpisodesViewController
+	
+        // Pass the selected object to the destination view controller.
+        if let indexPath = self.tableView.indexPathForSelectedRow() {
+            let row = Int(indexPath.row)
+            let userSerie = objects?[row] as! PFObject
+            let serie = userSerie["serie"] as! PFObject
+            let titulo = serie["Titulo"] as? String
+            myEpisodesViewController.serie = serie["Titulo"] as? String
+        }
+    }
 
 }

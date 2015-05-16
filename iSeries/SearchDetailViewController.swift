@@ -10,6 +10,7 @@ import UIKit
 
 class SearchDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    var serie:  PFObject!
     var serieID: NSString!
     var seasons = NSMutableArray()
     

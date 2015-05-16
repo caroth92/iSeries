@@ -177,11 +177,22 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segue" {
-            let searchDetailViewController = segue.destinationViewController as! SearchDetailViewController
+            // Get the new view controller using [segue destinationViewController].
+            var searchDetailViewController = segue.destinationViewController as! SearchDetailViewController
+            
+            // Pass the selected object to the destination view controller.
+            if let indexPath = self.tableView.indexPathForSelectedRow() {
+                let row = Int(indexPath.row)
+                let userSerie = objects?[row] as! PFObject
+                let serie = userSerie["serie"] as! PFObject
+                searchDetailViewController.serie = (objects?[row] as! PFObject)
+            }
+            
+            /*let searchDetailViewController = segue.destinationViewController as! SearchDetailViewController
             let actualIndexPath = self.tableView.indexPathForSelectedRow()
             let row = actualIndexPath?.row
             let serieObject = self.searchSeries[row!] as! PFObject
-            searchDetailViewController.serieID = serieObject.valueForKey("objectId") as! NSString
+            searchDetailViewController.serieID = serieObject.valueForKey("objectId") as! NSString*/
         }
     }
 }
