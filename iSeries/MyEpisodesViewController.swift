@@ -10,8 +10,8 @@ import UIKit
 
 class MyEpisodesViewController: PFQueryTableViewController {
     
-    var serie: PFObject!
-    var serieID: NSString!
+    //var serie: PFObject!
+    var serie: NSString!
     var seasons = NSMutableArray()
     var episodes = NSMutableArray()
     
@@ -62,6 +62,8 @@ class MyEpisodesViewController: PFQueryTableViewController {
         var query = PFQuery(className: "UserHistorial")
         query.whereKey("user", equalTo: PFUser.currentUser()!)
         query.includeKey("episodio")
+        query.includeKey("episodio.temporada")
+        query.includeKey("episodio.temporada.serie")
         
         return query
     }
@@ -82,6 +84,11 @@ class MyEpisodesViewController: PFQueryTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("episodeCell", forIndexPath: indexPath) as! PFTableViewCell
         
+        /*let episodio = object?["episodio"] as! PFObject
+        let temporada = episodio["temporada"] as! PFObject
+        let serie = temporada["serie"] as! PFObject
+        let titulo = serie["Titulo"] as! String
+        */
         if let title = object?["episodio"]?["Titulo"] as? String {
             cell.textLabel!.text = title
         }
@@ -94,6 +101,8 @@ class MyEpisodesViewController: PFQueryTableViewController {
         var watchedAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Watched" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             
             // Query
+            
+            self.tableView.reloadData()
         })
         
         return [watchedAction]
