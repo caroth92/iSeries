@@ -8,6 +8,18 @@
 
 import UIKit
 
+extension UITableView {
+    func hideSearchBar() {
+        if let bar = self.tableHeaderView as? UISearchBar {
+            let height = CGRectGetHeight(bar.frame);
+            let offset = self.contentOffset.y
+            if offset < height {
+                self.contentOffset = CGPointMake(0, height);
+            }
+        }
+    }
+}
+
 class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
@@ -41,6 +53,9 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
         
         searchBar.delegate = self
         
+        // Hide searchBar
+        self.tableView.hideSearchBar()
+        
         /*
         self.searchSeries.addObjectsFromArray(results!)
         
@@ -49,6 +64,8 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
         }
         */
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
