@@ -179,7 +179,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="episodeCell" textLabel="fz5-cU-m0p" style="IBUITableViewCellStyleDefault" id="FAA-nT-xiu">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FAA-nT-xiu" id="bKU-g0-zTB">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -272,7 +272,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="second" id="Mps-n1-crz"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="Mps-n1-crz"/>
                     <connections>
                         <outlet property="userName" destination="M54-BN-lbi" id="Y4j-rE-t1k"/>
                         <outlet property="userPicture" destination="A9R-3O-ZKt" id="wlt-rJ-tQ4"/>
@@ -384,7 +384,7 @@
         <scene sceneID="ZdE-iF-Mf4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gtB-52-W4i" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" id="WRM-eD-jJ0"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="search" id="WRM-eD-jJ0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ib3-6u-Wwy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -403,7 +403,7 @@
         <scene sceneID="XG1-uE-fun">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TjL-jf-TOE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Releases" id="zTs-Nr-O7C"/>
+                    <tabBarItem key="tabBarItem" title="Releases" image="film" id="zTs-Nr-O7C"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JfO-Fg-uZM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -430,30 +430,30 @@
                                 <rect key="frame" x="0.0" y="60" width="320" height="458"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BJV-vE-fUy">
-                                    <size key="itemSize" width="142" height="251"/>
+                                    <size key="itemSize" width="178" height="257"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="0QU-9t-ktb" customClass="DiscoCell" customModule="iSeries" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="64" width="142" height="251"/>
+                                        <rect key="frame" x="71" y="64" width="178" height="257"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="142" height="251"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="178" height="257"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1eO-KF-Wdg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="139" height="203"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gmN-oo-7DW">
-                                                    <rect key="frame" x="8" y="222" width="131" height="21"/>
+                                                    <rect key="frame" x="8" y="222" width="162" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1eO-KF-Wdg">
+                                                    <rect key="frame" x="20" y="0.0" width="139" height="203"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -484,7 +484,7 @@
         <scene sceneID="Tnq-hk-VVP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="re1-pM-qc5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Series" id="cLq-Mq-seC"/>
+                    <tabBarItem key="tabBarItem" title="My Series" image="myseries" id="cLq-Mq-seC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bFz-4d-RX6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -501,7 +501,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="second" width="30" height="30"/>
+        <image name="film" width="30" height="30"/>
+        <image name="myseries" width="30" height="30"/>
+        <image name="profile" width="30" height="30"/>
+        <image name="search" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
