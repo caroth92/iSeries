@@ -20,19 +20,20 @@ class ReleasesViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.loadNewReleases{(object, error) -> () in
-            let temporada = object["temporada"]! as! PFObject
+        self.loadNewReleases{(objects, error) -> () in
+            for object in objects {
+                let temporada = object["temporada"]! as! PFObject
                 let serie = temporada["serie"]! as! PFObject
                 let title = serie["Titulo"] as! String
                 self.titles.append(title)
                 let image = serie["Imagen"] as! PFFile
                 self.images.append(image)
-
+            }
             self.collectionView.reloadData()
         }
     }
     
-    func loadNewReleases(callback: (PFObject!,NSError!) -> ()) {
+    func loadNewReleases(callback: ([PFObject]!,NSError!) -> ()) {
         let date = NSDate()
         var query = PFQuery(className: "Episodio")
         query.whereKey("Aired", greaterThan: date)
@@ -41,7 +42,7 @@ class ReleasesViewController: UIViewController, UICollectionViewDataSource, UICo
         
         query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]?,error:NSError?) -> Void in
             if error == nil {
-                callback((objects!.first as? PFObject)!, error)
+                callback(objects as? [PFObject], error)
             }
         }
     }
