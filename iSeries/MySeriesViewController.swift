@@ -162,7 +162,7 @@ class MySeriesViewController: PFQueryTableViewController {
             let userSerie = objects?[row] as! PFObject
             let serie = userSerie["serie"] as! PFObject
             let titulo = serie["Titulo"] as? String
-            myEpisodesViewController.serie = serie["Titulo"] as? String
+            myEpisodesViewController.serie = userSerie["serie"] as! PFObject
         }
     }
 

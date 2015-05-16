@@ -10,8 +10,8 @@ import UIKit
 
 class MyEpisodesViewController: PFQueryTableViewController {
     
-    //var serie: PFObject!
-    var serie: NSString!
+    var serie: PFObject!
+    //var serie: NSString!
     var seasons = NSMutableArray()
     var episodes = NSMutableArray()
     
@@ -59,13 +59,14 @@ class MyEpisodesViewController: PFQueryTableViewController {
     //#Mark ------------------------------------------------------------------------------------------------------------------------
     
     override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: "UserHistorial")
-        query.whereKey("user", equalTo: PFUser.currentUser()!)
-        query.includeKey("episodio")
-        query.includeKey("episodio.temporada")
-        query.includeKey("episodio.temporada.serie")
+        var query = PFQuery(className: "Temporada")
+        query.whereKey("serie", equalTo: self.serie)
+        query.includeKey("serie")
         
-        return query
+        var episodes = PFQuery(className: "Episodio")
+        episodes.whereKey("temporada", matchesKey: "objectId", inQuery: query)
+        
+        return episodes
     }
     
     //#Mark ------------------------------------------------------------------------------------------------------------------------
@@ -84,12 +85,7 @@ class MyEpisodesViewController: PFQueryTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("episodeCell", forIndexPath: indexPath) as! PFTableViewCell
         
-        /*let episodio = object?["episodio"] as! PFObject
-        let temporada = episodio["temporada"] as! PFObject
-        let serie = temporada["serie"] as! PFObject
-        let titulo = serie["Titulo"] as! String
-        */
-        if let title = object?["episodio"]?["Titulo"] as? String {
+        if let title = object?["Titulo"] as? String {
             cell.textLabel!.text = title
         }
         
