@@ -185,7 +185,7 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
                 let row = Int(indexPath.row)
                 let userSerie = objects?[row] as! PFObject
                 let serie = userSerie["serie"] as! PFObject
-                searchDetailViewController.serie = (objects?[row] as! PFObject)
+                searchDetailViewController.serie = userSerie["serie"] as! PFObject
             }
             
             /*let searchDetailViewController = segue.destinationViewController as! SearchDetailViewController
