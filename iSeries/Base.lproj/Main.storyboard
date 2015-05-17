@@ -514,7 +514,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="0QU-9t-ktb" customClass="DiscoCell" customModule="iSeries" customModuleProvider="target">
-                                        <rect key="frame" x="71" y="64" width="178" height="257"/>
+                                        <rect key="frame" x="71" y="0.0" width="178" height="257"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="178" height="257"/>

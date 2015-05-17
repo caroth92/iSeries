@@ -24,7 +24,6 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var searchSeries = NSMutableArray()
     var seriesArray:[String] = []
     
     // Search vars
@@ -44,7 +43,7 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
         // Configure the PFQueryTableView
         self.parseClassName = "Series"
         self.textKey = "Titulo"
-        self.pullToRefreshEnabled = true
+        self.pullToRefreshEnabled = false
         self.paginationEnabled = false
     }
     
@@ -55,17 +54,7 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
         
         // Hide searchBar
         self.tableView.hideSearchBar()
-        
-        /*
-        self.searchSeries.addObjectsFromArray(results!)
-        
-        for i in self.searchSeries {
-        seriesArray.append(i.valueForKey("Titulo") as! String)
-        }
-        */
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -82,13 +71,33 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
         return query
     }
     
+    override func objectsDidLoad(error: NSError!) {
+        super.objectsDidLoad(error)
+
+        // Add serie's title to search array
+        for object in self.objects! {
+            if let title = object["Titulo"] as? String {
+                self.seriesArray.append(title)
+            }
+        }
+    }
+    
     //#Mark ------------------------------------------------------------------------------------------------------------------------
     //#Mark: - Table view data source
     //#Mark ------------------------------------------------------------------------------------------------------------------------
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (searchActive) {
+            return self.filtered.count
+        } else {
+            return self.objects!.count
+        }
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PFTableViewCell
-        
+
         if (searchActive) {
+            let row = indexPath.row
             cell.textLabel!.text = filtered[indexPath.row]
         } else {
             if let title = object?["Titulo"] as? String {
@@ -120,16 +129,18 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        filtered = self.seriesArray.filter({ (text) -> Bool in
+        
+        self.filtered = self.seriesArray.filter({ (text) -> Bool in
             let tmp: NSString = text
             let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+         
             return range.location != NSNotFound
         })
         
-        if (filtered.count == 0) {
-            searchActive = false
+        if (self.filtered.count == 0) {
+            self.searchActive = false
         } else {
-            searchActive = true
+            self.searchActive = true
         }
         
         self.tableView.reloadData()
@@ -138,35 +149,18 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return NO if you do not want the specified item to be editable.
-    return true
     }
-    */
     
-    /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }
-    }
-    */
     
-    /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    
     }
-    */
     
-    /*
     // Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return NO if you do not want the item to be re-orderable.
-    return true
     }
     */
     
