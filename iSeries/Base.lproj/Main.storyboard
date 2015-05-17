@@ -60,11 +60,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="MUg-w8-g6o" style="IBUITableViewCellStyleDefault" id="nGV-uc-AbA" customClass="PFTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="MUg-w8-g6o" style="IBUITableViewCellStyleDefault" id="nGV-uc-AbA" customClass="PFTableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nGV-uc-AbA" id="uAq-C2-KH5">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MUg-w8-g6o">
@@ -75,6 +75,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="NUf-5y-CuZ" kind="push" id="nHe-VU-pPn"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -87,6 +90,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DWx-Pg-kEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1370" y="343"/>
+        </scene>
+        <!--Episodes Table View Controller-->
+        <scene sceneID="gtd-vB-7GI">
+            <objects>
+                <tableViewController id="NUf-5y-CuZ" customClass="EpisodesTableViewController" customModule="iSeries" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fnn-Eh-WBt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="p1o-AT-gGt" style="IBUITableViewCellStyleDefault" id="oCd-z3-qO7" customClass="PFTableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oCd-z3-qO7" id="uez-WD-ldh">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p1o-AT-gGt">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="NUf-5y-CuZ" id="dly-lz-eFB"/>
+                            <outlet property="delegate" destination="NUf-5y-CuZ" id="pR0-St-Vbr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="QQQ-v3-UQu"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pes-K1-Cz9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1854" y="343"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="H1h-L5-Rv0">
@@ -204,12 +244,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AdJ-Ap-DLQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2406" y="579"/>
+            <point key="canvasLocation" x="3622" y="459"/>
         </scene>
-        <!--Episodes Table View Controller-->
+        <!--Table View Controller-->
         <scene sceneID="r6U-bK-8eU">
             <objects>
-                <tableViewController id="qYQ-UP-vy0" customClass="EpisodesTableViewController" customModule="iSeries" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="qYQ-UP-vy0" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="BrI-nc-hZp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -245,7 +285,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w1U-62-VFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2853" y="579"/>
+            <point key="canvasLocation" x="4069" y="459"/>
         </scene>
         <!--Episode Detail View Controller-->
         <scene sceneID="Ia3-yQ-2bh">
@@ -260,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tn-gG-6NF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3294" y="579"/>
+            <point key="canvasLocation" x="4510" y="459"/>
         </scene>
         <!--Profile-->
         <scene sceneID="lGe-gR-GJQ">
@@ -474,7 +514,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="0QU-9t-ktb" customClass="DiscoCell" customModule="iSeries" customModuleProvider="target">
-                                        <rect key="frame" x="71" y="0.0" width="178" height="257"/>
+                                        <rect key="frame" x="71" y="64" width="178" height="257"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="178" height="257"/>

@@ -21,7 +21,7 @@ extension UITableView {
 }
 
 class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
-
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     var searchSeries = NSMutableArray()
@@ -37,7 +37,7 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
     override init(style: UITableViewStyle, className: String!) {
         super.init(style: style, className: className)
     }
-
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -47,7 +47,7 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
         self.pullToRefreshEnabled = true
         self.paginationEnabled = false
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,18 +60,18 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
         self.searchSeries.addObjectsFromArray(results!)
         
         for i in self.searchSeries {
-            seriesArray.append(i.valueForKey("Titulo") as! String)
+        seriesArray.append(i.valueForKey("Titulo") as! String)
         }
         */
     }
     
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
-
+    
     //#Mark ------------------------------------------------------------------------------------------------------------------------
     //#Mark: - Parse table view data source
     //#Mark ------------------------------------------------------------------------------------------------------------------------
@@ -134,64 +134,64 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
         
         self.tableView.reloadData()
     }
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
+    // Return NO if you do not want the specified item to be editable.
+    return true
     }
     */
-
+    
     /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    if editingStyle == .Delete {
+    // Delete the row from the data source
+    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    } else if editingStyle == .Insert {
+    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }
     }
     */
-
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
     }
     */
-
+    
     /*
     // Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
+    // Return NO if you do not want the item to be re-orderable.
+    return true
     }
     */
-
+    
     //#Mark ------------------------------------------------------------------------------------------------------------------------
     //#Mark: - Navigation
     //#Mark ------------------------------------------------------------------------------------------------------------------------
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
-            var searchDetailViewController = segue.destinationViewController as! SearchDetailViewController
-            
-            // Pass the selected object to the destination view controller.
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let row = Int(indexPath.row)
-                let serie = objects?[row] as! PFObject
-                //let serie = userSerie["serie"] as! PFObject
-                searchDetailViewController.serie = serie
-            }
-            
-            /*let searchDetailViewController = segue.destinationViewController as! SearchDetailViewController
-            let actualIndexPath = self.tableView.indexPathForSelectedRow()
-            let row = actualIndexPath?.row
-            let serieObject = self.searchSeries[row!] as! PFObject
-            searchDetailViewController.serieID = serieObject.valueForKey("objectId") as! NSString*/
-
+        var searchDetailViewController = segue.destinationViewController as! SearchDetailViewController
+        
+        // Pass the selected object to the destination view controller.
+        if let indexPath = self.tableView.indexPathForSelectedRow() {
+            let row = Int(indexPath.row)
+            let serie = objects?[row] as! PFObject
+            //let serie = userSerie["serie"] as! PFObject
+            searchDetailViewController.serie = serie
+        }
+        
+        /*let searchDetailViewController = segue.destinationViewController as! SearchDetailViewController
+        let actualIndexPath = self.tableView.indexPathForSelectedRow()
+        let row = actualIndexPath?.row
+        let serieObject = self.searchSeries[row!] as! PFObject
+        searchDetailViewController.serieID = serieObject.valueForKey("objectId") as! NSString*/
+        
     }
 }
