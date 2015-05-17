@@ -12,8 +12,6 @@ class ReleasesViewController: UIViewController, UICollectionViewDataSource, UICo
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let discos = ["1.jpg", "2.jpg", "3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg","12.jpg","13.jpg","14.jpg","15.jpg","16.jpg","17.jpg","18.jpg","19.jpg"]
-    
     var images:[PFFile] = []
     var titles:[String] = []
     
@@ -52,7 +50,7 @@ class ReleasesViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     //#Mark ------------------------------------------------------------------------------------------------------------------------
-    //#Mark: - Table view data source
+    //#Mark: - Collection view data source
     //#Mark ------------------------------------------------------------------------------------------------------------------------
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -62,7 +60,6 @@ class ReleasesViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! DiscoCell
         
-        //cell.portada.image = UIImage(named: self.discos[indexPath.row])
         cell.titulo.text = self.titles[indexPath.row]
         let imagePFFile = self.images[indexPath.row]
         imagePFFile.getDataInBackgroundWithBlock{
@@ -73,11 +70,5 @@ class ReleasesViewController: UIViewController, UICollectionViewDataSource, UICo
         }
         
         return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition.CenteredVertically)
-        
-        var cell = collectionView.cellForItemAtIndexPath(indexPath) as! DiscoCell
     }
 }

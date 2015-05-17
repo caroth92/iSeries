@@ -16,11 +16,4 @@ class DiscoCell: UICollectionViewCell {
     
     var imagenPortada: UIImage?
     var title: String = ""
-    
-    
-    
-    
-    
-    
-    
 }

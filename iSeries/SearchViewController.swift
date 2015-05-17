@@ -23,10 +23,9 @@ extension UITableView {
 class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
+
+    // Search variables
     var seriesArray:[String] = []
-    
-    // Search vars
     var searchActive: Bool = false
     var filtered:[String] = []
     
@@ -58,7 +57,6 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
     //#Mark ------------------------------------------------------------------------------------------------------------------------
@@ -146,24 +144,6 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
         self.tableView.reloadData()
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    }
-    
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    }
-    
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    }
-    
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    }
-    */
-    
     //#Mark ------------------------------------------------------------------------------------------------------------------------
     //#Mark: - Navigation
     //#Mark ------------------------------------------------------------------------------------------------------------------------
@@ -177,15 +157,7 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
         if let indexPath = self.tableView.indexPathForSelectedRow() {
             let row = Int(indexPath.row)
             let serie = objects?[row] as! PFObject
-            //let serie = userSerie["serie"] as! PFObject
             searchDetailViewController.serie = serie
         }
-        
-        /*let searchDetailViewController = segue.destinationViewController as! SearchDetailViewController
-        let actualIndexPath = self.tableView.indexPathForSelectedRow()
-        let row = actualIndexPath?.row
-        let serieObject = self.searchSeries[row!] as! PFObject
-        searchDetailViewController.serieID = serieObject.valueForKey("objectId") as! NSString*/
-        
     }
 }
