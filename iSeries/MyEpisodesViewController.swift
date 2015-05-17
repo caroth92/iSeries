@@ -83,7 +83,7 @@ class MyEpisodesViewController: PFQueryTableViewController {
     */
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("episodeCell", forIndexPath: indexPath) as! PFTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PFTableViewCell
         
         if let title = object?["Titulo"] as? String {
             cell.textLabel!.text = title

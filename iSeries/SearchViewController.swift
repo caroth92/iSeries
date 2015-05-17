@@ -86,7 +86,7 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
     //#Mark: - Table view data source
     //#Mark ------------------------------------------------------------------------------------------------------------------------
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("searchCell", forIndexPath: indexPath) as! PFTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PFTableViewCell
         
         if (searchActive) {
             cell.textLabel!.text = filtered[indexPath.row]
@@ -176,16 +176,15 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "segue" {
-            // Get the new view controller using [segue destinationViewController].
+        // Get the new view controller using [segue destinationViewController].
             var searchDetailViewController = segue.destinationViewController as! SearchDetailViewController
             
             // Pass the selected object to the destination view controller.
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let row = Int(indexPath.row)
-                let userSerie = objects?[row] as! PFObject
-                let serie = userSerie["serie"] as! PFObject
-                searchDetailViewController.serie = userSerie["serie"] as! PFObject
+                let serie = objects?[row] as! PFObject
+                //let serie = userSerie["serie"] as! PFObject
+                searchDetailViewController.serie = serie
             }
             
             /*let searchDetailViewController = segue.destinationViewController as! SearchDetailViewController
@@ -193,6 +192,6 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
             let row = actualIndexPath?.row
             let serieObject = self.searchSeries[row!] as! PFObject
             searchDetailViewController.serieID = serieObject.valueForKey("objectId") as! NSString*/
-        }
+
     }
 }
