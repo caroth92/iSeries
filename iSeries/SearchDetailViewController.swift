@@ -8,7 +8,69 @@
 
 import UIKit
 
-class SearchDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SearchDetailViewController: PFQueryTableViewController {
+    
+    var serie: PFObject!
+    
+    override init(style: UITableViewStyle, className: String!) {
+        super.init(style: style, className: className)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        // Configure the PFQueryTableView
+        self.parseClassName = "Temporada"
+        self.textKey = "NumTemporada"
+        self.pullToRefreshEnabled = true
+        self.paginationEnabled = false
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    //#Mark: - Parse table view data source
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    
+    override func queryForTable() -> PFQuery {
+        var query = PFQuery(className: "Temporada")
+        query.whereKey("serie", equalTo: self.serie)
+        
+        return query
+    }
+    
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    //#Mark: - Table view data source
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    
+    /*override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.episodes.count
+    }
+    */
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PFTableViewCell
+        
+        if let title = object?["NumTemporada"] as? String {
+            cell.textLabel!.text = title
+        }
+        
+        return cell
+    }
+
+}
+
+/*class SearchDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var serie:  PFObject!
     var serieID: NSString!
@@ -190,3 +252,4 @@ class SearchDetailViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
 }
+*/

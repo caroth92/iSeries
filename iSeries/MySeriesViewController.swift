@@ -105,7 +105,7 @@ class MySeriesViewController: PFQueryTableViewController {
     }*/
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("serieCell", forIndexPath: indexPath) as! PFTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PFTableViewCell
         
         if let title = object?["serie"]?["Titulo"] as? String {
             cell.textLabel!.text = title
@@ -160,8 +160,6 @@ class MySeriesViewController: PFQueryTableViewController {
         if let indexPath = self.tableView.indexPathForSelectedRow() {
             let row = Int(indexPath.row)
             let userSerie = objects?[row] as! PFObject
-            let serie = userSerie["serie"] as! PFObject
-            let titulo = serie["Titulo"] as? String
             myEpisodesViewController.serie = userSerie["serie"] as! PFObject
         }
     }
