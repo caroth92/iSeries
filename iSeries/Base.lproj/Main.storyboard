@@ -91,12 +91,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vum-7Y-L4w">
-                                <rect key="frame" x="196" y="264" width="73" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" id="Vum-7Y-L4w">
+                                <rect key="frame" x="163" y="264" width="141" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Follow">
+                                <state key="normal" title="-">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="followSerie:" destination="h1k-9F-gim" eventType="touchUpInside" id="P6w-yM-3NN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -105,7 +108,6 @@
                     <connections>
                         <outlet property="countryLabel" destination="Wcl-wM-5An" id="dju-0P-lEa"/>
                         <outlet property="followButton" destination="Vum-7Y-L4w" id="Zmf-j8-vXf"/>
-                        <outlet property="followSerie" destination="Vum-7Y-L4w" id="UXO-PI-MSY"/>
                         <outlet property="genreLabel" destination="k6t-tK-mxn" id="pkY-ZH-qrJ"/>
                         <outlet property="imageView" destination="QIo-8Y-rNf" id="7jK-j1-idO"/>
                         <outlet property="titleLabel" destination="c0I-tW-gq8" id="V9f-ZV-H6c"/>
@@ -418,7 +420,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="0QU-9t-ktb" customClass="DiscoCell" customModule="iSeries" customModuleProvider="target">
-                                        <rect key="frame" x="71" y="64" width="178" height="257"/>
+                                        <rect key="frame" x="71" y="0.0" width="178" height="257"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="178" height="257"/>
