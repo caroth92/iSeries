@@ -8,57 +8,46 @@
 
 import UIKit
 
-class SearchDetailViewController: PFQueryTableViewController {
+class SearchDetailViewController: UIViewController {
     
     var serie: PFObject!
     
-    override init(style: UITableViewStyle, className: String!) {
-        super.init(style: style, className: className)
-    }
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var countryLabel: UILabel!
+
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var followButton: UIButton!
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        // Configure the PFQueryTableView
-        self.parseClassName = "Temporada"
-        self.textKey = "NumTemporada"
-        self.pullToRefreshEnabled = true
-        self.paginationEnabled = false
-    }
+    
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    //#Mark: - View Lifecycle
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    //#Mark ------------------------------------------------------------------------------------------------------------------------
-    //#Mark: - Parse table view data source
-    //#Mark ------------------------------------------------------------------------------------------------------------------------
-    
-    override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: "Temporada")
-        query.whereKey("serie", equalTo: self.serie)
-        query.orderByDescending("PremiereDate")
         
-        return query
-    }
-    
-    //#Mark ------------------------------------------------------------------------------------------------------------------------
-    //#Mark: - Table view data source
-    //#Mark ------------------------------------------------------------------------------------------------------------------------
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PFTableViewCell
+        self.titleLabel.text = self.serie["Titulo"] as? String
+        self.genreLabel.text = self.serie["Genero"] as? String
+        self.countryLabel.text = self.serie["Country"] as? String
         
-        if let title = object?["NumTemporada"] as? String {
-            cell.textLabel!.text = title
+        let imagePFFile: PFFile = self.serie["Imagen"] as! PFFile
+        imagePFFile.getDataInBackgroundWithBlock{
+            (imageData: NSData?, error: NSError?) -> Void in
+            if (!(error != nil)) {
+                self.imageView.image = UIImage(data: imageData!)
+            }
         }
-        
-        return cell
+
     }
+    
+    
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+    //#Mark: - Follow serie action
+    //#Mark ------------------------------------------------------------------------------------------------------------------------
+
+    @IBOutlet weak var followSerie: UIButton!
+    
     
     //#Mark ------------------------------------------------------------------------------------------------------------------------
     //#Mark: - Table view data source
@@ -67,18 +56,14 @@ class SearchDetailViewController: PFQueryTableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
-        var episodesTableViewController = segue.destinationViewController as! EpisodesTableViewController
-        
-        // Pass the selected object to the destination view controller.
-        if let indexPath = self.tableView.indexPathForSelectedRow() {
-            let row = Int(indexPath.row)
-            let season = objects?[row] as! PFObject
-            episodesTableViewController.season = season
-        }
+        var searchDetailTableViewController = segue.destinationViewController as! SearchDetailTableViewController
+        searchDetailTableViewController.serie = self.serie
     }
 }
 
-/*class SearchDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+/*
+class SearchDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var serie:  PFObject!
     var serieID: NSString!
