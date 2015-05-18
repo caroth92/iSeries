@@ -164,16 +164,16 @@
 				4BB027351AA7E05B00915046 /* Images.xcassets */,
 				4BB027371AA7E05B00915046 /* LaunchScreen.xib */,
 				4BB0272A1AA7E05B00915046 /* Supporting Files */,
-				4BDF546A1AABF12200068207 /* ProfileViewController.swift */,
+				6A0288411ABEA8F900E0C5CD /* MySeriesViewController.swift */,
+				6A0288431ABEABAA00E0C5CD /* MyEpisodesViewController.swift */,
 				6AB362D01ABE17AB0010DC29 /* SearchViewController.swift */,
 				6AD0FF9F1ABE3AFF00536746 /* SearchDetailViewController.swift */,
 				4B7B2ADD1B09634A00DDB155 /* SearchDetailTableViewController.swift */,
-				4B3663171ABE39D3000529C2 /* ReleasesViewController.swift */,
 				6A888BB31ABE6719003E2D07 /* EpisodesTableViewController.swift */,
-				6A888BB51ABE699A003E2D07 /* EpisodeDetailViewController.swift */,
-				6A0288411ABEA8F900E0C5CD /* MySeriesViewController.swift */,
-				6A0288431ABEABAA00E0C5CD /* MyEpisodesViewController.swift */,
+				4B3663171ABE39D3000529C2 /* ReleasesViewController.swift */,
 				6A02C67E1B057B7C0021DEA6 /* DiscoCell.swift */,
+				4BDF546A1AABF12200068207 /* ProfileViewController.swift */,
+				6A888BB51ABE699A003E2D07 /* EpisodeDetailViewController.swift */,
 			);
 			path = iSeries;
 			sourceTree = "<group>";

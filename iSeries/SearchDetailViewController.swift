@@ -42,7 +42,7 @@ class SearchDetailViewController: UIViewController {
         var userSerie = PFQuery(className: "UserSeries")
         userSerie.whereKey("user", equalTo: PFUser.currentUser()!)
         userSerie.whereKey("serie", equalTo: self.serie)
-        userSerie.findObjectsInBackgroundWithBlock{(objects:[AnyObject]?,error:NSError?) -> Void in
+        userSerie.findObjectsInBackgroundWithBlock{(objects:[AnyObject]?, error:NSError?) -> Void in
             if error == nil {
                 self.followButton!.setTitle((objects!.count == 0) ? "Follow" : "Unfollow", forState: UIControlState.Normal)
             }
@@ -67,7 +67,7 @@ class SearchDetailViewController: UIViewController {
                 (success: Bool, error: NSError?) -> Void in
                 if success {
                     self.followButton!.setTitle("Unfollow", forState: UIControlState.Normal)
-                    //fillUserHistorial
+                    self.fillUserHistorial()
                 }
                 
             }
@@ -81,7 +81,7 @@ class SearchDetailViewController: UIViewController {
                     object?.deleteInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
                         if success {
                             self.followButton!.setTitle("Follow", forState: UIControlState.Normal)
-                            //deleteUserHistorial
+                            self.deleteUserHistorial()
                         }
                     })
                 }
@@ -89,8 +89,52 @@ class SearchDetailViewController: UIViewController {
         }
     }
     
-    func changeUserHistorial(fill: Bool) -> Void {
+    func fillUserHistorial() -> Void {
+        var query = PFQuery(className: "Temporada")
+        query.whereKey("serie", equalTo: self.serie)
+        query.includeKey("serie")
         
+        var episodes = PFQuery(className: "Episodio")
+        episodes.whereKey("temporada", matchesKey: "objectId", inQuery: query)
+        episodes.findObjectsInBackgroundWithBlock { (objects:[AnyObject]?,error:NSError?) -> Void in
+            for object in objects! {
+                var userHistorialEpisode = PFObject(className: "UserHistorial")
+                userHistorialEpisode.setValue(PFUser.currentUser()!, forKey: "user")
+                userHistorialEpisode.setValue(object, forKey: "episodio")
+                userHistorialEpisode.saveInBackgroundWithBlock{
+                    (success: Bool, error: NSError?) -> Void in
+                    if success {
+                        
+                    }
+                    
+                }
+            }
+        }
+    }
+    
+    func deleteUserHistorial() -> Void {
+        var query = PFQuery(className: "Temporada")
+        query.whereKey("serie", equalTo: self.serie)
+        query.includeKey("serie")
+        
+        var episodes = PFQuery(className: "Episodio")
+        episodes.whereKey("temporada", matchesKey: "objectId", inQuery: query)
+        episodes.findObjectsInBackgroundWithBlock { (objects:[AnyObject]?,error:NSError?) -> Void in
+            for object in objects! {
+                var userSeriesQuery = PFQuery(className: "UserHistorial")
+                userSeriesQuery.whereKey("episodio", equalTo: object)
+                userSeriesQuery.whereKey("user", equalTo: PFUser.currentUser()!)
+                userSeriesQuery.getFirstObjectInBackgroundWithBlock{
+                    (object: PFObject?, error: NSError?) -> Void in
+                    if error == nil && object != nil {
+                        object?.deleteInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                            if success {
+                            }
+                        })
+                    }
+                }
+            }
+        }
     }
     
     //#Mark ------------------------------------------------------------------------------------------------------------------------
@@ -104,28 +148,3 @@ class SearchDetailViewController: UIViewController {
         searchDetailTableViewController.serie = self.serie
     }
 }
-
-
-/*
-func fillUserHistory() {
-let userID = (PFUser.currentUser()!.objectId as NSString?)!
-var episodes = NSMutableArray()
-var queryEpisodes = PFQuery(className: "Episodio")
-
-for season in self.seasons {
-var seasonID = (season.objectId as String?)!
-queryEpisodes.whereKey("Temporada", equalTo: seasonID)
-var results = queryEpisodes.findObjects()
-episodes.addObjectsFromArray(results!)
-}
-
-for episode in episodes {
-var userHistorial = PFObject(className: "UserHistorial")
-userHistorial["UserId"] = userID
-userHistorial["EpisodeId"] = episode.objectId
-userHistorial.save()
-println(episode.objectId)
-}
-
-}
-*/
