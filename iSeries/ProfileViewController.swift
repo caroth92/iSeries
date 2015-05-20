@@ -9,41 +9,24 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userPicture: UIImageView!
+    @IBOutlet weak var episodesCount: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-            let request:FBRequest = FBRequest.requestForMe()
-            request.startWithCompletionHandler { (connection:FBRequestConnection!, result:AnyObject!, error:NSError!) -> Void in
-                if error == nil{
-                    if let dict = result as? Dictionary<String, AnyObject>{
-                        let name:String = dict["name"] as AnyObject? as! String
-                        let facebookID:String = dict["id"] as AnyObject? as! String
-                        
-                        let pictureURL = "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1"
-                        
-                        var URLRequest = NSURL(string: pictureURL)
-                        var URLRequestNeeded = NSURLRequest(URL: URLRequest!)
-                        
-                        self.userName.text = name
-                        
-                        NSURLConnection.sendAsynchronousRequest(URLRequestNeeded, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!, error: NSError!) -> Void in
-                            if error == nil {
-                                var picture = PFFile(data: data)
-                                PFUser.currentUser()!.setObject(picture, forKey: "profilePicture")
-                            } else {
-                                println("Error: \(error.localizedDescription)")
-                            }
-                        })
-                        PFUser.currentUser()!.setValue(name, forKey: "username")
-                    }
-                }
+        var userHistorial = PFQuery(className: "UserHistorial")
+        userHistorial.whereKey("user", equalTo: PFUser.currentUser()!)
+        userHistorial.whereKey("seen", equalTo: true)
+        userHistorial.findObjectsInBackgroundWithBlock{(objects:[AnyObject]?,error:NSError?) -> Void in
+            if error == nil {
+                self.episodesCount.text = String(stringInterpolationSegment: objects!.count)
             }
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

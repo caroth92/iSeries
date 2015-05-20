@@ -14,6 +14,8 @@ class DiscoCell: UICollectionViewCell {
 
     @IBOutlet weak var titulo: UILabel!
     
+    @IBOutlet weak var serie: UILabel!
+    
     var imagenPortada: UIImage?
     var title: String = ""
 }

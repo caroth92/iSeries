@@ -29,6 +29,8 @@ class MyEpisodesViewController: PFQueryTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "My Episodes"
     }
     
     override func didReceiveMemoryWarning() {

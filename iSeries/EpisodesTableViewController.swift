@@ -31,12 +31,7 @@ class EpisodesTableViewController: PFQueryTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*var query = PFQuery(className: "Episodio")
-        query.whereKey("Temporada", equalTo: seasonID)
-        query.addAscendingOrder("Aired")
-        
-        let result = query.findObjects()
-        self.episodes.addObjectsFromArray(result!)*/
+        self.title = "Episodes"
     }
 
     override func didReceiveMemoryWarning() {

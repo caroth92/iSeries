@@ -47,7 +47,8 @@ class SearchDetailViewController: UIViewController {
                 self.followButton!.setTitle((objects!.count == 0) ? "Follow" : "Unfollow", forState: UIControlState.Normal)
             }
         }
-
+        
+        self.title = "Serie Detail"
     }
     
     
@@ -101,6 +102,7 @@ class SearchDetailViewController: UIViewController {
                 var userHistorialEpisode = PFObject(className: "UserHistorial")
                 userHistorialEpisode.setValue(PFUser.currentUser()!, forKey: "user")
                 userHistorialEpisode.setValue(object, forKey: "episodio")
+                userHistorialEpisode.setValue(false, forKey: "seen")
                 userHistorialEpisode.saveInBackgroundWithBlock{
                     (success: Bool, error: NSError?) -> Void in
                     if success {

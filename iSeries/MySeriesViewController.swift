@@ -28,6 +28,8 @@ class MySeriesViewController: PFQueryTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "My Series"
     }
     
     override func didReceiveMemoryWarning() {

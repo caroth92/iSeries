@@ -28,6 +28,8 @@ class SearchDetailTableViewController: PFQueryTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Seasons"
     }
     
     override func didReceiveMemoryWarning() {

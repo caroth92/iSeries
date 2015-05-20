@@ -53,6 +53,8 @@ class SearchViewController: PFQueryTableViewController, UISearchBarDelegate {
         
         // Hide searchBar
         self.tableView.hideSearchBar()
+        
+        self.title = "Search Series"
     }
     
     override func didReceiveMemoryWarning() {

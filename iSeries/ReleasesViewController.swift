@@ -14,6 +14,7 @@ class ReleasesViewController: UIViewController, UICollectionViewDataSource, UICo
     
     var images:[PFFile] = []
     var titles:[String] = []
+    var series:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,10 @@ class ReleasesViewController: UIViewController, UICollectionViewDataSource, UICo
             for object in objects {
                 let temporada = object["temporada"]! as! PFObject
                 let serie = temporada["serie"]! as! PFObject
-                let title = serie["Titulo"] as! String
+                let title = object["Titulo"] as! String
                 self.titles.append(title)
+                let serieTitle = serie["Titulo"] as! String
+                self.series.append(serieTitle)
                 let image = serie["Imagen"] as! PFFile
                 self.images.append(image)
             }
@@ -61,6 +64,7 @@ class ReleasesViewController: UIViewController, UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! DiscoCell
         
         cell.titulo.text = self.titles[indexPath.row]
+        cell.serie.text = self.series[indexPath.row]
         let imagePFFile = self.images[indexPath.row]
         imagePFFile.getDataInBackgroundWithBlock{
             (imageData: NSData?, error: NSError?) -> Void in
